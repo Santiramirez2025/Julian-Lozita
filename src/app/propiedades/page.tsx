@@ -1,25 +1,43 @@
+import type { Metadata } from 'next'
 import { Suspense } from 'react'
-import { Metadata } from 'next'
 import PropiedadesClient from './PropiedadesClient'
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://julianlozita.com'
+
 export const metadata: Metadata = {
-  title: 'Propiedades en Venta en Villa María',
+  title: 'Propiedades en Venta y Alquiler en Villa María | Julián Lozita Inmobiliaria',
   description:
-    'Encontrá casas, departamentos, terrenos y más en venta en Villa María, Córdoba. Filtros por tipo, precio, barrio y búsqueda inteligente con IA.',
+    'Explorá casas, departamentos, terrenos y locales en Villa María, Córdoba. Filtros por zona, precio y tipo. Fotos reales, precios actualizados y contacto directo.',
+  keywords: [
+    'propiedades villa maría',
+    'casas en venta villa maría',
+    'departamentos villa maría',
+    'terrenos villa maría',
+    'alquiler villa maría',
+    'inmobiliaria villa maría córdoba',
+  ],
+  openGraph: {
+    title: 'Propiedades en Villa María | Julián Lozita Inmobiliaria',
+    description:
+      'Casas, departamentos, terrenos y locales en venta y alquiler en Villa María.',
+    url: `${siteUrl}/propiedades`,
+    images: [
+      {
+        url: `${siteUrl}/og-image.jpg`,
+        width: 1200,
+        height: 630,
+        alt: 'Propiedades en Villa María — Julián Lozita Inmobiliaria',
+      },
+    ],
+  },
+  alternates: {
+    canonical: `${siteUrl}/propiedades`,
+  },
 }
 
 export default function PropiedadesPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-bg flex items-center justify-center">
-          <svg className="animate-spin h-8 w-8 text-primary" viewBox="0 0 24 24">
-            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
-            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-          </svg>
-        </div>
-      }
-    >
+    <Suspense>
       <PropiedadesClient />
     </Suspense>
   )

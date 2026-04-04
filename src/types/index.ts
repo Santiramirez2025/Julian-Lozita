@@ -93,7 +93,7 @@ export interface PropertyFilters {
   maxPrice?: number
   rooms?: number
   neighborhood?: string
-  status?: string
+  search?: string
 }
 
 export interface PropertyEvent {
