@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  description String   @db.Text
+  price       Float
+  currency    String   @default("USD")
+
+  // Ubicación
+  address      String
+  neighborhood String
+  city         String @default("Villa María")
+  province     String @default("Córdoba")
+  latitude     Float?
+  longitude    Float?
+
+  // Características
+  propertyType String
+  rooms        Int?
+  bedrooms     Int?
+  bathrooms    Int?
+  garages      Int?
+  totalArea    Float?
+  coveredArea  Float?
+
+  // Features (extras)
+  features String[]
+
+  // Imágenes
+  images     String[]
+  coverImage String
+
+  // Estado
+  status    String  @default("available")
+  featured  Boolean @default(false)
+  published Boolean @default(true)
+  
+  // Badges comerciales
+  acceptsPermuta  Boolean @default(false)  // 🔁 Acepta permuta
+  hasFinancing    Boolean @default(false)  // 💸 Financiación posible
+  urgentSale      Boolean @default(false)  // ⚡ Urgente venta
+  negotiable      Boolean @default(true)   // Precio negociable
+
+  // SEO
+  metaTitle       String?
+  metaDescription String?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relations
+  events    PropertyEvent[]
+
+  @@index([status])
+  @@index([propertyType])
+  @@index([neighborhood])
+  @@index([featured])
+  @@index([published])
+}
+
+// Analytics: cada interacción del usuario
+model PropertyEvent {
+  id         String   @id @default(cuid())
+  propertyId String
+  property   Property @relation(fields: [propertyId], references: [id], onDelete: Cascade)
+  
+  type       String   // "view", "scroll", "whatsapp_click", "qr_scan", "share", "gallery_open", "time_on_page"
+  value      String?  // ej: seconds on page, scroll %, referrer
+  ip         String?
+  userAgent  String?
+  referrer   String?
+  sessionId  String?  // para agrupar eventos de una misma visita
+  
+  createdAt  DateTime @default(now())
+
+  @@index([propertyId])
+  @@index([type])
+  @@index([createdAt])
+  @@index([sessionId])
+}
+
+// Scoring cache: la IA calcula y guarda scores
+model PropertyScore {
+  id          String   @id @default(cuid())
+  propertyId  String   @unique
+  
+  totalViews     Int   @default(0)
+  uniqueViews    Int   @default(0)
+  qrScans        Int   @default(0)
+  whatsappClicks Int   @default(0)
+  avgTimeOnPage  Float @default(0) // seconds
+  scrollDepth    Float @default(0) // 0-100%
+  shares         Int   @default(0)
+  
+  // AI scoring
+  heatScore      Float @default(0)  // 0-100, calculado por IA
+  priceAnalysis  String? @db.Text   // JSON con análisis de precio
+  aiSuggestions  String? @db.Text   // JSON con sugerencias
+  
+  updatedAt DateTime @updatedAt
+  
+  @@index([heatScore(sort: Desc)])
+}
