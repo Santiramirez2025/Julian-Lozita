@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, Inter, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 import ToastProvider from '@/components/ui/Toast'
@@ -21,105 +21,67 @@ const jetbrains = JetBrains_Mono({
   display: 'swap',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://julianlozita.com'
-
-export const viewport: Viewport = {
-  themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#FAFAFA' },
-    { media: '(prefers-color-scheme: dark)', color: '#0A0A0F' },
-  ],
-  width: 'device-width',
-  initialScale: 1,
-}
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
   title: {
-    default: 'Julián Lozita Inmobiliaria | Propiedades en Villa María, Córdoba',
-    template: '%s | Julián Lozita Inmobiliaria',
+    default: 'J-Lozita Inmobiliaria | Propiedades en Venta en Villa María, Córdoba',
+    template: '%s | J-Lozita Villa María',
   },
   description:
-    'Encontrá casas, departamentos, terrenos y locales en Villa María y zona. Asesoramiento personalizado en compra, venta y alquiler de propiedades.',
+    'Encontrá casas, departamentos y terrenos en venta en Villa María, Córdoba. Escaneá el QR en nuestros carteles y conocé cada propiedad al instante.',
   keywords: [
+    'propiedades en venta villa maría',
+    'casas en venta villa maría córdoba',
     'inmobiliaria villa maría',
-    'propiedades villa maría',
-    'casas en venta villa maría',
-    'departamentos villa maría',
     'terrenos villa maría',
-    'alquiler villa maría',
-    'inmobiliaria córdoba',
-    'julián lozita',
+    'departamentos villa maría',
   ],
-  authors: [{ name: 'Julián Lozita', url: siteUrl }],
-  creator: 'Santiago Ramírez',
+  authors: [{ name: 'Julián Lozita' }],
   openGraph: {
     type: 'website',
     locale: 'es_AR',
-    url: siteUrl,
-    siteName: 'Julián Lozita Inmobiliaria',
-    title: 'Julián Lozita Inmobiliaria | Propiedades en Villa María',
+    url: 'https://julianlozita.com',
+    siteName: 'J-Lozita Inmobiliaria',
+    title: 'J-Lozita Inmobiliaria | Propiedades en Venta en Villa María',
     description:
-      'Casas, departamentos y terrenos en Villa María, Córdoba. Asesoramiento personalizado en compra, venta y alquiler.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Julián Lozita Inmobiliaria — Propiedades en Villa María',
-      },
-    ],
+      'Encontrá casas, departamentos y terrenos en venta en Villa María, Córdoba.',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Julián Lozita Inmobiliaria | Villa María, Córdoba',
-    description:
-      'Encontrá tu próxima propiedad en Villa María. Casas, departamentos, terrenos y más.',
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
   },
-  icons: {
-    icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
-  },
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://julianlozita.com'),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // WebSite schema — distinct from RealEstateAgent in page.tsx
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'WebSite',
-    name: 'Julián Lozita Inmobiliaria',
-    url: siteUrl,
-    description:
-      'Inmobiliaria en Villa María, Córdoba. Compra, venta y alquiler de propiedades.',
-    publisher: {
-      '@type': 'Organization',
-      name: 'Julián Lozita Inmobiliaria',
-      url: siteUrl,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteUrl}/logo.png`,
-      },
+    '@type': 'RealEstateAgent',
+    name: 'J-Lozita Inmobiliaria',
+    description: 'Venta de propiedades en Villa María, Córdoba, Argentina.',
+    url: 'https://julianlozita.com',
+    areaServed: {
+      '@type': 'City',
+      name: 'Villa María',
+      containedInPlace: { '@type': 'State', name: 'Córdoba' },
     },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: `${siteUrl}/propiedades?q={search_term_string}`,
-      'query-input': 'required name=search_term_string',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Villa María',
+      addressRegion: 'Córdoba',
+      addressCountry: 'AR',
     },
   }
 
   return (
     <html lang="es" className={`${jakarta.variable} ${inter.variable} ${jetbrains.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+        <link rel="icon" href="/favicon-16.png" sizes="16x16" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

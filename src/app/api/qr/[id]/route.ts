@@ -51,12 +51,13 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ id: 
         top: Math.round(posterHeight * 0.35),
         left: Math.round((posterWidth - qrSize) / 2),
       },
-      // Logo text "J-Lozita" as SVG
+      // Logo text "J-LOZITA" with cyan accent bar (V3 style)
       {
         input: Buffer.from(`
           <svg width="${posterWidth}" height="400">
-            <text x="${posterWidth / 2}" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-weight="bold" font-size="180" fill="#1E3A5F">J-Lozita</text>
-            <text x="${posterWidth / 2}" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-weight="normal" font-size="80" fill="#64748B">INMOBILIARIA</text>
+            <rect x="${posterWidth / 2 - 120}" y="100" width="240" height="20" rx="10" fill="#00D4FF"/>
+            <text x="${posterWidth / 2}" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="200" fill="#1E3A5F" letter-spacing="-8">J-LOZITA</text>
+            <text x="${posterWidth / 2}" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-weight="300" font-size="70" fill="#64748B" letter-spacing="30">INMOBILIARIA</text>
           </svg>
         `),
         top: Math.round(posterHeight * 0.08),

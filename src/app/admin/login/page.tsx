@@ -36,9 +36,7 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-bg flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
         <div className="text-center mb-8">
-          <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center font-heading font-extrabold text-xl mx-auto mb-4">
-            JL
-          </div>
+          <img src="/images/logo-mark.svg" alt="J-Lozita" className="w-14 h-14 mx-auto mb-4" />
           <h1 className="font-heading font-bold text-2xl text-text">Admin Panel</h1>
           <p className="text-sm text-text-light mt-1">J-Lozita Inmobiliaria</p>
         </div>

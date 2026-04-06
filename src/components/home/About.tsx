@@ -2,7 +2,6 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-import Image from 'next/image'
 import Button from '@/components/ui/Button'
 
 const values = [
@@ -53,7 +52,7 @@ export default function About() {
     <section className="py-20 sm:py-28 bg-bg" id="sobre-julian">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-center">
-          {/* ── Photo column ── */}
+          {/* Photo column */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
@@ -61,20 +60,23 @@ export default function About() {
             className="lg:col-span-2 relative"
           >
             <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
-              {/* Replace this div with Image when you have Julián's photo */}
+              {/* 
+                Para poner la foto real de Julián:
+                1. Poné la imagen en public/images/julian.jpg
+                2. Descomentá el Image de abajo
+                3. Borrá el bloque "Placeholder"
+              */}
               {/* <Image
-                src="/images/julian-lozita.jpg"
+                src="/images/julian.jpg"
                 alt="Julián Lozita — Asesor inmobiliario en Villa María"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
               /> */}
 
-              {/* Placeholder — remove when real photo is added */}
+              {/* Placeholder — borrar cuando esté la foto real */}
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <div className="w-28 h-28 rounded-2xl bg-primary/10 flex items-center justify-center mb-4">
-                  <span className="text-5xl font-heading font-extrabold text-primary">JL</span>
-                </div>
+                <img src="/images/logo-mark.svg" alt="JL" className="w-24 h-24 mb-4" />
                 <p className="text-text font-heading font-semibold">Julián Lozita</p>
                 <p className="text-text-light text-sm">Asesor inmobiliario</p>
               </div>
@@ -92,7 +94,7 @@ export default function About() {
             </motion.div>
           </motion.div>
 
-          {/* ── Text column ── */}
+          {/* Text column */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={inView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
@@ -110,7 +112,7 @@ export default function About() {
 
             <div className="space-y-3 text-text-light text-sm sm:text-base leading-relaxed mb-8">
               <p>
-                Soy Julián Lozita. Me dedico a la compra, venta y alquiler de propiedades en Villa María y zona con un enfoque simple:{' '}
+                Soy Julián Lozita. Me dedico a la venta de propiedades en Villa María y zona con un enfoque simple:{' '}
                 <span className="text-text font-medium">transparencia, trato personal y conocimiento real de cada barrio.</span>
               </p>
               <p>
@@ -118,7 +120,7 @@ export default function About() {
               </p>
             </div>
 
-            {/* ── Values ── */}
+            {/* Values */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-8">
               {values.map((value, i) => (
                 <motion.div
@@ -139,7 +141,7 @@ export default function About() {
               ))}
             </div>
 
-            {/* ── CTA ── */}
+            {/* CTA */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : { opacity: 0 }}

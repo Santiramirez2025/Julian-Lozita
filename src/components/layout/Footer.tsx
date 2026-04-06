@@ -4,7 +4,6 @@ import Link from 'next/link'
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 
-// Reusable fade-up wrapper
 function FadeUp({
   children,
   delay = 0,
@@ -30,19 +29,12 @@ function FadeUp({
   )
 }
 
-// Animated grid background
 function GridBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Gradient mesh orbs */}
       <div className="absolute -top-32 -right-32 w-96 h-96 rounded-full bg-primary/8 blur-[120px]" />
       <div className="absolute -bottom-48 -left-24 w-80 h-80 rounded-full bg-accent/5 blur-[100px]" />
-
-      {/* Animated grid lines */}
-      <svg
-        className="absolute inset-0 w-full h-full opacity-[0.03]"
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg className="absolute inset-0 w-full h-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <pattern id="footer-grid" width="60" height="60" patternUnits="userSpaceOnUse">
             <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" strokeWidth="0.5" />
@@ -50,8 +42,6 @@ function GridBackground() {
         </defs>
         <rect width="100%" height="100%" fill="url(#footer-grid)" />
       </svg>
-
-      {/* Horizontal scanning line */}
       <motion.div
         className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/20 to-transparent"
         initial={{ top: '0%' }}
@@ -62,7 +52,6 @@ function GridBackground() {
   )
 }
 
-// Animated counter dot for the "active" indicator
 function PulseDot() {
   return (
     <span className="relative flex h-2 w-2">
@@ -84,7 +73,6 @@ export default function Footer() {
   const navLinks = [
     { href: '/', label: 'Inicio' },
     { href: '/propiedades', label: 'Propiedades en venta' },
-    { href: '/propiedades?tipo=alquiler', label: 'Alquileres' },
     { href: '/contacto', label: 'Contacto' },
   ]
 
@@ -99,14 +87,12 @@ export default function Footer() {
     <footer ref={footerRef} className="relative bg-bg-dark text-white overflow-hidden" role="contentinfo">
       <GridBackground />
 
-      {/* ── CTA Banner ── */}
+      {/* CTA Banner */}
       <div className="relative border-b border-white/[0.06]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
           <FadeUp>
             <div className="relative rounded-2xl border border-white/[0.08] bg-white/[0.02] backdrop-blur-sm p-8 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 overflow-hidden">
-              {/* Glow accent inside card */}
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
               <div className="text-center sm:text-left relative z-10">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-white leading-tight">
                   ¿Buscás tu próxima propiedad?
@@ -115,7 +101,6 @@ export default function Footer() {
                   Asesoramiento sin compromiso. Respondemos en minutos.
                 </p>
               </div>
-
               <motion.a
                 href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                 target="_blank"
@@ -135,34 +120,22 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* ── Main Content ── */}
+      {/* Main Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <FadeUp delay={0.05} className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2.5 mb-5 group">
-              <motion.div
-                whileHover={{ rotate: -6, scale: 1.08 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-                className="w-10 h-10 rounded-xl bg-gradient-to-br from-white/10 to-white/[0.03] border border-white/[0.12] flex items-center justify-center font-heading font-extrabold text-sm text-white"
-              >
-                JL
-              </motion.div>
-              <div className="flex flex-col">
-                <span className="font-heading font-bold text-base leading-tight text-white">
-                  Julián Lozita
-                </span>
-                <span className="text-[10px] font-medium uppercase tracking-[0.2em] text-white/35 leading-tight">
-                  Inmobiliaria
-                </span>
-              </div>
+            <Link href="/" className="inline-block mb-5">
+              <img
+                src="/images/logo-white.svg"
+                alt="J-Lozita Inmobiliaria"
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Compra, venta y alquiler de propiedades en Villa María y zona.
+              Venta de propiedades en Villa María y zona.
               Casas, departamentos, terrenos y locales comerciales.
             </p>
-
-            {/* Online indicator */}
             <div className="flex items-center gap-2 mt-5">
               <PulseDot />
               <span className="text-xs text-white/35">Respondemos en minutos</span>
@@ -213,7 +186,6 @@ export default function Footer() {
               Contacto
             </h4>
             <div className="flex flex-col gap-3.5">
-              {/* WhatsApp */}
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
                 target="_blank"
@@ -229,7 +201,6 @@ export default function Footer() {
                 Escribir por WhatsApp
               </a>
 
-              {/* Teléfono */}
               <a
                 href="tel:+5493534000000"
                 className="text-sm text-white/40 hover:text-accent transition-colors duration-200 flex items-center gap-2.5 w-fit group"
@@ -242,7 +213,6 @@ export default function Footer() {
                 353 400-0000
               </a>
 
-              {/* Ubicación */}
               <div className="text-sm text-white/40 flex items-center gap-2.5">
                 <span className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
@@ -253,7 +223,6 @@ export default function Footer() {
                 Villa María, Córdoba
               </div>
 
-              {/* Horario */}
               <div className="text-sm text-white/40 flex items-center gap-2.5">
                 <span className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
@@ -264,7 +233,6 @@ export default function Footer() {
                 Lun a Vie · 9:00 – 18:00
               </div>
 
-              {/* Social */}
               <div className="flex items-center gap-2 mt-2">
                 {[
                   {
@@ -306,7 +274,7 @@ export default function Footer() {
           </FadeUp>
         </div>
 
-        {/* ── Animated divider ── */}
+        {/* Animated divider */}
         <div className="relative mt-12 mb-6">
           <div className="h-px bg-white/[0.06]" />
           <motion.div
@@ -317,11 +285,11 @@ export default function Footer() {
           />
         </div>
 
-        {/* ── Bottom bar ── */}
+        {/* Bottom bar */}
         <FadeUp delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[11px] text-white/20 tracking-wide">
-              © {currentYear} Julián Lozita Inmobiliaria — Villa María, Córdoba
+              © {currentYear} J-Lozita Inmobiliaria — Villa María, Córdoba
             </p>
             <p className="text-[11px] text-white/20 tracking-wide">
               Diseño por{' '}

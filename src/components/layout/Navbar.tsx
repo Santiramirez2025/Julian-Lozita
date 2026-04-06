@@ -24,7 +24,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // Block body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = 'hidden'
@@ -52,30 +51,13 @@ export default function Navbar() {
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo — branded with "Inmobiliaria" for SEO context */}
-          <Link href="/" className="flex items-center gap-2.5 group" aria-label="Julián Lozita Inmobiliaria - Inicio">
-            <div className={cn(
-              'w-9 h-9 rounded-xl flex items-center justify-center font-heading font-extrabold text-sm transition-all duration-300',
-              isScrolled 
-                ? 'bg-primary text-white group-hover:shadow-md group-hover:shadow-primary/20' 
-                : 'bg-white/10 text-white border border-white/20 group-hover:bg-white/20'
-            )}>
-              JL
-            </div>
-            <div className="flex flex-col">
-              <span className={cn(
-                'font-heading font-bold text-base leading-tight transition-colors',
-                isScrolled ? 'text-primary' : 'text-white'
-              )}>
-                Julián Lozita
-              </span>
-              <span className={cn(
-                'text-[10px] font-medium uppercase tracking-widest leading-tight transition-colors',
-                isScrolled ? 'text-text-light' : 'text-white/50'
-              )}>
-                Inmobiliaria
-              </span>
-            </div>
+          {/* Logo V3 — switches between color and white based on scroll */}
+          <Link href="/" className="flex items-center" aria-label="J-Lozita Inmobiliaria - Inicio">
+            <img
+              src={isScrolled ? '/images/logo.svg' : '/images/logo-white.svg'}
+              alt="J-Lozita Inmobiliaria"
+              className="h-8 sm:h-9 w-auto transition-all duration-300"
+            />
           </Link>
 
           {/* Desktop links */}
@@ -113,7 +95,7 @@ export default function Navbar() {
               )
             })}
 
-            {/* Phone — visible on larger screens */}
+            {/* Phone */}
             <a
               href="tel:+5493534000000"
               className={cn(
@@ -168,7 +150,6 @@ export default function Navbar() {
       <AnimatePresence>
         {isMobileOpen && (
           <>
-            {/* Backdrop — tap to close */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -178,7 +159,6 @@ export default function Navbar() {
               aria-hidden="true"
             />
 
-            {/* Menu panel */}
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -209,7 +189,6 @@ export default function Navbar() {
 
                 <div className="w-full h-px bg-border my-2" />
 
-                {/* Phone link mobile */}
                 <a
                   href="tel:+5493534000000"
                   className="flex items-center justify-center gap-2 w-full py-3 text-text-light font-medium text-sm"
