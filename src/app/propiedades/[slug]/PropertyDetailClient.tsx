@@ -13,10 +13,11 @@ import PropertyShare from '@/components/properties/PropertyShare'
 import PropertyCard from '@/components/properties/PropertyCard'
 import PropertyBadges from '@/components/properties/PropertyBadges'
 import PriceSimulator from '@/components/properties/PriceSimulator'
+import StickyContactBar from '@/components/properties/StickyContactBar'
 import Badge from '@/components/ui/Badge'
 import { Property } from '@/types'
 import { usePropertyTracking } from '@/lib/analytics'
-import { getWhatsAppLink, timeAgo } from '@/lib/utils'
+import { getWhatsAppLink, timeAgo, formatPrice } from '@/lib/utils'
 
 interface Props {
   property: Property
@@ -90,6 +91,17 @@ export default function PropertyDetailClient({ property, similar }: Props) {
             <div className="space-y-5">
               <PropertyContact title={property.title} neighborhood={property.neighborhood} />
 
+              {/* Agendar visita */}
+              <a
+                href={getWhatsAppLink(`Hola Julián! Quiero agendar una visita para ver "${property.title}" en ${property.neighborhood}. ¿Cuándo se puede?`)}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackWhatsApp}
+                className="block w-full text-center py-3.5 rounded-2xl bg-primary text-white font-semibold text-sm hover:bg-primary-light transition-all"
+              >
+                📅 Agendar visita
+              </a>
+
               {/* Negotiate button */}
               {property.negotiable && (
                 <a
@@ -149,6 +161,14 @@ export default function PropertyDetailClient({ property, similar }: Props) {
       <Footer />
       <WhatsAppFloat />
       <ChatBot />
+      {property.status === 'available' && (
+        <StickyContactBar
+          title={property.title}
+          neighborhood={property.neighborhood}
+          price={formatPrice(property.price, property.currency)}
+          onWhatsAppClick={trackWhatsApp}
+        />
+      )}
     </>
   )
 }
