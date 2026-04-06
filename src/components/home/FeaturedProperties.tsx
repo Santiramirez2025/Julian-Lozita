@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useEffect, useState, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import PropertyCard from '@/components/properties/PropertyCard'
@@ -12,8 +12,6 @@ export default function FeaturedProperties() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
-  const headingRef = useRef(null)
-  const headingInView = useInView(headingRef, { once: true, margin: '-60px' })
 
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(false)
@@ -114,14 +112,8 @@ export default function FeaturedProperties() {
   return (
     <section className="py-20 sm:py-28 bg-bg" id="propiedades-destacadas">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          ref={headingRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={headingInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10"
-        >
+        {/* Header — sin animación condicional, siempre visible */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary/60 mb-3">Destacadas</p>
             <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-text leading-tight">
@@ -142,7 +134,7 @@ export default function FeaturedProperties() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
 
         {/* Cards */}
         <div className="relative">
@@ -162,7 +154,7 @@ export default function FeaturedProperties() {
                 key={property.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: index * 0.08, duration: 0.4 }}
                 className="min-w-[280px] sm:min-w-[300px] lg:min-w-0"
               >
@@ -173,18 +165,13 @@ export default function FeaturedProperties() {
         </div>
 
         {/* Mobile CTA */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-8 text-center sm:hidden"
-        >
+        <div className="mt-8 text-center sm:hidden">
           <Link href="/propiedades">
             <Button variant="secondary" size="md" className="w-full">
               Ver todas las propiedades →
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
