@@ -109,7 +109,7 @@ export default function AdminPropiedadesPage() {
                 </div>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
-                <QRDownloader propertyId={p.id} propertyTitle={p.title} slug={p.slug} />
+              <QRDownloader propertyId={p.id} slug={p.slug} />
                 <Link href={`/admin/propiedades/${p.id}/editar`}>
                   <Button variant="secondary" size="sm">✏️ Editar</Button>
                 </Link>

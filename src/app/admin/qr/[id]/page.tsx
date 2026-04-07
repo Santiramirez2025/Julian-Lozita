@@ -53,10 +53,9 @@ export default function AdminQRPage() {
         </div>
 
         <QRDownloader
-          propertyId={property.id}
-          propertyTitle={property.title}
-          slug={property.slug}
-        />
+  propertyId={property.id}
+  slug={property.slug}
+/>
       </div>
     </div>
   )
