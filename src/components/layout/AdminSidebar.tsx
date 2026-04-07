@@ -71,7 +71,7 @@ export default function AdminSidebar() {
   const pathname = usePathname()
 
   return (
-    <aside className="w-64 bg-white border-r border-border min-h-screen p-6 admin-sidebar hidden lg:block">
+    <aside className="w-64 bg-white border-r border-border min-h-screen p-6 admin-sidebar hidden lg:flex lg:flex-col">
       {/* Logo */}
       <Link href="/admin" className="flex items-center gap-3 mb-8">
         <img src="/images/logo-mark.svg" alt="J-Lozita" className="w-9 h-9" />
@@ -103,10 +103,11 @@ export default function AdminSidebar() {
         })}
       </nav>
 
-      {/* Separator + actions */}
-      <div className="mt-auto pt-8 border-t border-border mt-8">
+      {/* Bottom actions */}
+      <div className="mt-auto pt-8 border-t border-border">
         <Link
           href="/"
+          target="_blank"
           className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-text-light hover:bg-gray-50 hover:text-text transition-all"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -118,7 +119,7 @@ export default function AdminSidebar() {
         </Link>
         <button
           onClick={() => signOut({ callbackUrl: '/' })}
-          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-sold hover:bg-red-50 transition-all w-full"
+          className="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium text-red-500 hover:bg-red-50 transition-all w-full"
         >
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
