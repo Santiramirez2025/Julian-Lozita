@@ -35,7 +35,7 @@ export default function Navbar() {
 
   const closeMobile = useCallback(() => setIsMobileOpen(false), [])
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent('Hola Julián, vi tu web y me interesa consultar por una propiedad.')
 
   return (
@@ -97,7 +97,7 @@ export default function Navbar() {
 
             {/* Phone */}
             <a
-              href="tel:+5493534000000"
+              href="tel:+5493534222575"
               className={cn(
                 'hidden lg:flex items-center gap-1.5 text-sm font-medium transition-colors',
                 isScrolled ? 'text-text-light hover:text-primary' : 'text-white/60 hover:text-white'
@@ -107,7 +107,7 @@ export default function Navbar() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
               </svg>
-              353 400-0000
+              353 422-2575
             </a>
 
             <a 
@@ -190,14 +190,14 @@ export default function Navbar() {
                 <div className="w-full h-px bg-border my-2" />
 
                 <a
-                  href="tel:+5493534000000"
+                  href="tel:+5493534222575"
                   className="flex items-center justify-center gap-2 w-full py-3 text-text-light font-medium text-sm"
                   onClick={closeMobile}
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
                   </svg>
-                  353 400-0000
+                  353 422-2575
                 </a>
 
                 <a 

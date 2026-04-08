@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 
 export default function WhatsAppFloat() {
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
 
   return (
     <motion.a

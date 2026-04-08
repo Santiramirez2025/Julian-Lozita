@@ -24,8 +24,8 @@ const contactMethods = [
   },
   {
     label: 'Teléfono',
-    description: '353 400-0000',
-    href: 'tel:+5493534000000',
+    description: '353 422-2575',
+    href: 'tel:+5493534222575',
     iconBg: 'bg-primary/10',
     icon: (
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
@@ -62,7 +62,7 @@ const contactMethods = [
 export default function ContactoClient() {
   const [form, setForm] = useState({ nombre: '', telefono: '', mensaje: '' })
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappDirectMessage = encodeURIComponent(
     'Hola Julián, vi tu web y me gustaría consultar sobre una propiedad.'
   )
@@ -172,7 +172,7 @@ export default function ContactoClient() {
                 <p className="text-xs text-text-light/50 mb-2 font-medium">Seguinos</p>
                 <div className="flex gap-2">
                   <a
-                    href="https://instagram.com/julianlozita"
+                    href="https://www.instagram.com/julilozita_"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Instagram"
@@ -185,7 +185,7 @@ export default function ContactoClient() {
                     </svg>
                   </a>
                   <a
-                    href="https://facebook.com/julianlozita"
+                    href="https://facebook.com/julianlozita_"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"

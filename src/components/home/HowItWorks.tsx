@@ -47,7 +47,7 @@ export default function HowItWorks() {
   const headingRef = useRef(null)
   const headingInView = useInView(headingRef, { once: true, margin: '-40px' })
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
     'Hola Julián, quiero consultar por una propiedad en Villa María.'
   )

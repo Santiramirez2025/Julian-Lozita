@@ -76,11 +76,14 @@ export default function Footer() {
     { href: '/contacto', label: 'Contacto' },
   ]
 
+  // Barrios destacados — los más buscados de Villa María y Villa Nueva
   const zonas = [
-    { href: '/propiedades?zona=centro', label: 'Centro' },
-    { href: '/propiedades?zona=norte', label: 'Barrio Norte' },
-    { href: '/propiedades?zona=sur', label: 'Zona Sur' },
-    { href: '/propiedades?zona=villa-nueva', label: 'Villa Nueva' },
+    { href: '/propiedades?barrio=Centro+Norte', label: 'Centro Norte' },
+    { href: '/propiedades?barrio=Parque+Norte', label: 'Parque Norte' },
+    { href: '/propiedades?barrio=Palermo', label: 'Palermo' },
+    { href: '/propiedades?barrio=Las+Lilas', label: 'Las Lilas (Villa Nueva)' },
+    { href: '/propiedades?barrio=Aguas+Claras', label: 'Aguas Claras (Villa Nueva)' },
+    { href: '/propiedades', label: 'Ver todos los barrios →' },
   ]
 
   return (
@@ -236,7 +239,7 @@ export default function Footer() {
               <div className="flex items-center gap-2 mt-2">
                 {[
                   {
-                    href: 'https://instagram.com/julianlozita',
+                    href: 'https://instagram.com/julilozita_',
                     label: 'Instagram de Julián Lozita Inmobiliaria',
                     icon: (
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -247,7 +250,7 @@ export default function Footer() {
                     ),
                   },
                   {
-                    href: 'https://facebook.com/julianlozita',
+                    href: 'https://facebook.com/julilozita_',
                     label: 'Facebook de Julián Lozita Inmobiliaria',
                     icon: (
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">

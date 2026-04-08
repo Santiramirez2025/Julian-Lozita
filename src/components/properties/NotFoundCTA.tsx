@@ -8,7 +8,7 @@ export default function NotFoundCTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-40px' })
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
     'Hola Julián, estuve viendo las propiedades en la web pero no encontré exactamente lo que busco. ¿Tenés otras opciones?'
   )

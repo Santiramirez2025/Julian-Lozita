@@ -10,6 +10,7 @@ import ImageUploader from './ImageUploader'
 import AIDescriptionGenerator from '@/components/ai/AIDescriptionGenerator'
 import { Property, PropertyFormData } from '@/types'
 import { slugify, formatPrice } from '@/lib/utils'
+import { barriosVillaMaria, barriosVillaNueva } from '@/lib/barrios'
 
 const propertyTypes = [
   { value: 'casa', label: 'Casa' },
@@ -242,11 +243,15 @@ export default function PropertyForm({ property }: PropertyFormProps) {
             onChange={(e) => updateField('address', e.target.value)}
             placeholder="Av. Sabattini 1234"
           />
-          <Input
+          <Select
             label="Barrio *"
             value={form.neighborhood}
             onChange={(e) => updateField('neighborhood', e.target.value)}
-            placeholder="Barrio Norte"
+            options={[
+              { value: '', label: 'Seleccioná un barrio' },
+              ...barriosVillaMaria.map((b) => ({ value: b.name, label: `${b.name} — Villa María` })),
+              ...barriosVillaNueva.map((b) => ({ value: b.name, label: `${b.name} — Villa Nueva` })),
+            ]}
           />
           <Input
             label="Latitud"

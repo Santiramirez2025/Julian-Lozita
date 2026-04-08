@@ -24,7 +24,7 @@ function JsonLd() {
     '@type': 'RealEstateAgent',
     name: 'Julián Lozita Inmobiliaria',
     url: siteUrl,
-    telephone: '+5493534000000',
+    telephone: '+5493534222575',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Villa María',
@@ -53,7 +53,7 @@ function JsonLd() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      telephone: '+5493534000000',
+      telephone: '+5493534222575',
       availableLanguage: 'Spanish',
     },
   }

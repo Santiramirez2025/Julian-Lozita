@@ -15,7 +15,7 @@ export default function CTA() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-60px' })
 
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
     'Hola Julián, estoy buscando propiedades en Villa María. ¿Podés asesorarme?'
   )

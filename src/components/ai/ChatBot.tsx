@@ -174,7 +174,7 @@ export default function ChatBot() {
             <div className="p-3 border-t border-border">
               {messageCount >= MAX_MESSAGES ? (
                 <a
-                  href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'}`}
+                  href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full text-center py-3 rounded-xl bg-[#25D366] text-white text-sm font-semibold"

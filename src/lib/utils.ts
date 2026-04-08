@@ -44,7 +44,7 @@ export function statusColor(status: string): string {
 }
 
 export function getWhatsAppLink(message: string): string {
-  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
+  const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   return `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
 }
 
