@@ -201,7 +201,7 @@ export default function Footer() {
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
                   </svg>
                 </span>
-                Escribir por WhatsApp
+                Escribir por WhatsApp:
               </a>
 
               <a
