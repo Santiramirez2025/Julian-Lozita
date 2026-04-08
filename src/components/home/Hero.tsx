@@ -105,7 +105,7 @@ export default function Hero() {
               <path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2" />
             </svg>
             <span className="text-white/90 text-xs sm:text-sm font-medium tracking-wide">
-              Escribano Público y Abogado matriculado
+              Escribano Público y Abogado
             </span>
           </motion.div>
 
