@@ -71,13 +71,13 @@ export default function Hero() {
             transition={{ delay: 0.5 }}
             className="text-white/60 text-sm font-medium tracking-widest uppercase mb-4"
           >
-            J-Lozita Inmobiliaria
+            J-Lozita — Estrategia Inmobiliaria & Patrimonial
           </motion.p>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-[1.08] mb-6">
-            Encontrá tu próxima propiedad en{' '}
+            Asesoramiento estratégico en decisiones inmobiliarias y construcción de{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
-              Villa María
+              patrimonio
             </span>
           </h1>
 
@@ -110,7 +110,7 @@ export default function Hero() {
           </motion.div>
 
           <p className="text-base sm:text-lg text-white/50 mb-10 max-w-lg leading-relaxed">
-            Escaneá el QR en nuestros carteles y conocé cada propiedad al instante. Fotos, datos, precio y contacto directo.
+            Te acompaño a decidir cuándo comprar, qué comprar y cómo proteger y hacer crecer tu patrimonio. Análisis claro, mirada local y trato directo.
           </p>
 
           {/* Search bar */}

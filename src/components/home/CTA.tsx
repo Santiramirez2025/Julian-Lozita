@@ -6,9 +6,9 @@ import Link from 'next/link'
 import Button from '@/components/ui/Button'
 
 const trustPoints = [
-  'Respuesta en minutos',
-  'Sin compromiso',
-  'Asesoramiento gratuito',
+  'Primera consulta sin cargo',
+  'Mirada estratégica',
+  'Confidencialidad',
 ]
 
 export default function CTA() {
@@ -17,7 +17,7 @@ export default function CTA() {
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
-    'Hola Julián, estoy buscando propiedades en Villa María. ¿Podés asesorarme?'
+    'Hola Julián, me interesa una asesoría sobre una decisión inmobiliaria o patrimonial. ¿Coordinamos una charla?'
   )
 
   return (
@@ -45,7 +45,7 @@ export default function CTA() {
                 transition={{ delay: 0.2 }}
                 className="text-accent text-xs font-semibold uppercase tracking-[0.2em] mb-4"
               >
-                Empezá hoy
+                Asesoramiento estratégico
               </motion.p>
 
               {/* H2 */}
@@ -55,9 +55,9 @@ export default function CTA() {
                 transition={{ delay: 0.25, duration: 0.45 }}
                 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white leading-tight mb-4"
               >
-                Tu próxima propiedad en Villa María
+                Cada decisión inmobiliaria
                 <br className="hidden sm:block" />
-                {' '}está a un mensaje de distancia
+                {' '}construye (o no) tu patrimonio
               </motion.h2>
 
               {/* Sub */}
@@ -67,8 +67,8 @@ export default function CTA() {
                 transition={{ delay: 0.35 }}
                 className="text-white/40 text-sm sm:text-base mb-8 max-w-lg mx-auto leading-relaxed"
               >
-                Contale a Julián qué buscás — tipo, zona, presupuesto — y recibí
-                opciones reales en minutos. Sin vueltas.
+                Contame qué estás pensando — comprar, invertir, entrar a pozo, reorganizar activos —
+                y armamos juntos el mejor camino para tu situación.
               </motion.p>
 
               {/* CTAs */}
@@ -88,14 +88,14 @@ export default function CTA() {
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
                       <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.508-.654-6.365-1.787l-.444-.267-3.07 1.03 1.03-3.07-.267-.444A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z" />
                     </svg>
-                    Consultá ahora por WhatsApp
+                    Coordinar una charla
                   </Button>
                 </a>
                 <Link
                   href="/propiedades"
                   className="text-white/35 hover:text-white text-sm font-medium transition-colors underline underline-offset-4 decoration-white/15 hover:decoration-white/40"
                 >
-                  o explorá las propiedades →
+                  o ver propiedades de referencia →
                 </Link>
               </motion.div>
 

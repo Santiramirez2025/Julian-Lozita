@@ -23,27 +23,27 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: 'J-Lozita Inmobiliaria | Propiedades en Venta en Villa María, Córdoba',
+    default: 'J-Lozita | Estrategia Inmobiliaria & Patrimonial en Villa María, Córdoba',
     template: '%s | J-Lozita Villa María',
   },
   description:
-    'Encontrá casas, departamentos y terrenos en venta en Villa María, Córdoba. Escaneá el QR en nuestros carteles y conocé cada propiedad al instante.',
+    'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María y zona. Análisis, inversión, pozo y resguardo de activos.',
   keywords: [
-    'propiedades en venta villa maría',
-    'casas en venta villa maría córdoba',
-    'inmobiliaria villa maría',
-    'terrenos villa maría',
-    'departamentos villa maría',
+    'asesor inmobiliario villa maría',
+    'asesoramiento patrimonial villa maría',
+    'inversión inmobiliaria córdoba',
+    'estrategia patrimonial villa maría',
+    'inversión en pozo villa maría',
   ],
   authors: [{ name: 'Julián Lozita' }],
   openGraph: {
     type: 'website',
     locale: 'es_AR',
     url: 'https://julianlozita.com',
-    siteName: 'J-Lozita Inmobiliaria',
-    title: 'J-Lozita Inmobiliaria | Propiedades en Venta en Villa María',
+    siteName: 'J-Lozita — Estrategia Inmobiliaria & Patrimonial',
+    title: 'J-Lozita | Estrategia Inmobiliaria & Patrimonial en Villa María',
     description:
-      'Encontrá casas, departamentos y terrenos en venta en Villa María, Córdoba.',
+      'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María y zona.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -58,9 +58,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const jsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    name: 'J-Lozita Inmobiliaria',
-    description: 'Venta de propiedades en Villa María, Córdoba, Argentina.',
+    '@type': ['RealEstateAgent', 'ProfessionalService'],
+    name: 'J-Lozita — Estrategia Inmobiliaria & Patrimonial',
+    description:
+      'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María, Córdoba, Argentina. Análisis de mercado, inversión, pozo y resguardo de activos.',
     url: 'https://julianlozita.com',
     areaServed: {
       '@type': 'City',

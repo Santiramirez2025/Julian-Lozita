@@ -6,34 +6,34 @@ import Button from '@/components/ui/Button'
 
 const values = [
   {
-    title: 'Trato directo',
-    description: 'Hablás conmigo. Sin intermediarios, sin call centers.',
+    title: 'Visión patrimonial',
+    description: 'Pensamos cada decisión en función de tu patrimonio total, no de una operación aislada.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4-4v2" />
-        <circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 00-3-3.87" />
-        <path d="M16 3.13a4 4 0 010 7.75" />
+        <path d="M12 2 4 7v6c0 4.5 3.5 8.5 8 9 4.5-.5 8-4.5 8-9V7l-8-5Z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
     ),
   },
   {
-    title: 'Conozco cada barrio',
-    description: 'Sé qué zonas están creciendo y dónde conviene invertir.',
+    title: 'Análisis de mercado',
+    description: 'Datos reales de Villa María y zona: precios, demanda, zonas que crecen y proyectos a pozo.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-        <circle cx="12" cy="10" r="3" />
+        <path d="M3 3v18h18" />
+        <path d="m7 14 4-4 3 3 5-6" />
       </svg>
     ),
   },
   {
-    title: 'Sin letra chica',
-    description: 'Precios reales, condiciones claras desde el primer contacto.',
+    title: 'Acompañamiento integral',
+    description: 'Te guío en cada paso: análisis, búsqueda, negociación y resguardo legal de la operación.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
-        <polyline points="22 4 12 14.01 9 11.01" />
+        <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
+        <path d="M4 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+        <circle cx="10" cy="7" r="4" />
+        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
       </svg>
     ),
   },
@@ -45,7 +45,7 @@ export default function About() {
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
-    'Hola Julián, me gustaría consultar sobre una propiedad.'
+    'Hola Julián, me gustaría conversar sobre una decisión inmobiliaria / patrimonial.'
   )
 
   return (
@@ -68,7 +68,7 @@ export default function About() {
               */}
               {/* <Image
                 src="/images/julian.jpg"
-                alt="Julián Lozita — Asesor inmobiliario en Villa María"
+                alt="Julián Lozita — Asesor en estrategia inmobiliaria y patrimonial en Villa María"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -78,7 +78,7 @@ export default function About() {
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <img src="/images/logo-mark.svg" alt="JL" className="w-24 h-24 mb-4" />
                 <p className="text-text font-heading font-semibold">Julián Lozita</p>
-                <p className="text-text-light text-sm">Asesor inmobiliario</p>
+                <p className="text-text-light text-sm">Estrategia inmobiliaria & patrimonial</p>
               </div>
             </div>
 
@@ -90,7 +90,7 @@ export default function About() {
               className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 glass rounded-xl px-5 py-3 shadow-lg"
             >
               <p className="font-heading font-extrabold text-2xl text-primary leading-none">5+</p>
-              <p className="text-text-light text-xs mt-0.5">Años en el mercado</p>
+              <p className="text-text-light text-xs mt-0.5">Años asesorando</p>
             </motion.div>
           </motion.div>
 
@@ -105,18 +105,18 @@ export default function About() {
               Sobre Julián
             </p>
             <h2 className="text-3xl sm:text-4xl font-heading font-extrabold text-text leading-tight mb-5">
-              Tu asesor inmobiliario
+              Estrategia inmobiliaria
               <br />
-              en <span className="text-primary">Villa María</span>
+              y <span className="text-primary">protección patrimonial</span>
             </h2>
 
             <div className="space-y-3 text-text-light text-sm sm:text-base leading-relaxed mb-8">
               <p>
-                Soy Julián Lozita. Me dedico a la venta de propiedades en Villa María y zona con un enfoque simple:{' '}
-                <span className="text-text font-medium">transparencia, trato personal y conocimiento real de cada barrio.</span>
+                Soy Julián Lozita. No vendo propiedades: te asesoro para tomar mejores decisiones inmobiliarias y patrimoniales en Villa María y la región. Trabajo con un enfoque claro:{' '}
+                <span className="text-text font-medium">analizar tu situación, entender tus objetivos y proponer caminos concretos.</span>
               </p>
               <p>
-                Cuando me contactás, hablás conmigo. Te acompaño en todo el proceso — desde la primera consulta hasta la escritura. Mi trabajo es que tomes la mejor decisión con información clara.
+                Te acompaño a evaluar cuándo comprar, qué comprar, dónde invertir, cuándo entrar a pozo o cómo reorganizar tus activos. Mi trabajo es que cada decisión sume a tu patrimonio en el largo plazo.
               </p>
             </div>
 
@@ -158,7 +158,7 @@ export default function About() {
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
                     <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.34 0-4.508-.654-6.365-1.787l-.444-.267-3.07 1.03 1.03-3.07-.267-.444A9.955 9.955 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z" />
                   </svg>
-                  Hablar con Julián
+                  Agendar asesoramiento
                 </Button>
               </a>
               <a

@@ -64,7 +64,7 @@ function PulseDot() {
 export default function Footer() {
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534000000'
   const whatsappMessage = encodeURIComponent(
-    'Hola Julián, vi tu web y me interesa consultar por una propiedad.'
+    'Hola Julián, vi tu web y me gustaría una asesoría sobre una decisión inmobiliaria / patrimonial.'
   )
   const currentYear = new Date().getFullYear()
   const footerRef = useRef(null)
@@ -98,10 +98,10 @@ export default function Footer() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               <div className="text-center sm:text-left relative z-10">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-white leading-tight">
-                  ¿Buscás tu próxima propiedad?
+                  ¿Tenés una decisión inmobiliaria por delante?
                 </h3>
                 <p className="text-white/40 text-sm mt-2 max-w-md">
-                  Asesoramiento sin compromiso. Respondemos en minutos.
+                  Asesoramiento estratégico para que cada paso sume a tu patrimonio. Sin compromiso.
                 </p>
               </div>
               <motion.a
@@ -131,13 +131,13 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-5">
               <img
                 src="/images/logo-white.svg"
-                alt="J-Lozita Inmobiliaria"
+                alt="J-Lozita — Estrategia Inmobiliaria & Patrimonial"
                 className="h-9 w-auto"
               />
             </Link>
             <p className="text-white/40 text-sm leading-relaxed max-w-xs">
-              Venta de propiedades en Villa María y zona.
-              Casas, departamentos, terrenos y locales comerciales.
+              Asesoramiento en decisiones inmobiliarias y construcción de patrimonio en Villa María y zona.
+              Análisis, inversión y resguardo de activos.
             </p>
             <div className="flex items-center gap-2 mt-5">
               <PulseDot />
@@ -240,7 +240,7 @@ export default function Footer() {
                 {[
                   {
                     href: 'https://instagram.com/julilozita_',
-                    label: 'Instagram de Julián Lozita Inmobiliaria',
+                    label: 'Instagram de Julián Lozita — Estrategia Inmobiliaria & Patrimonial',
                     icon: (
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
@@ -251,7 +251,7 @@ export default function Footer() {
                   },
                   {
                     href: 'https://facebook.com/julilozita_',
-                    label: 'Facebook de Julián Lozita Inmobiliaria',
+                    label: 'Facebook de Julián Lozita — Estrategia Inmobiliaria & Patrimonial',
                     icon: (
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
@@ -292,7 +292,7 @@ export default function Footer() {
         <FadeUp delay={0.3}>
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <p className="text-[11px] text-white/20 tracking-wide">
-              © {currentYear} J-Lozita Inmobiliaria — Villa María, Córdoba
+              © {currentYear} J-Lozita — Estrategia Inmobiliaria & Patrimonial — Villa María, Córdoba
             </p>
             <p className="text-[11px] text-white/20 tracking-wide">
               Diseño por{' '}
