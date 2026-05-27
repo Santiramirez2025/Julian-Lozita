@@ -29,9 +29,15 @@ export default function PropertyContact({ title, neighborhood }: PropertyContact
         </Button>
       </a>
 
-      <div className="mt-4 text-center">
-        <p className="text-xs text-text-light">
-          Julián Lozita · Villa María, Córdoba
+      <div className="mt-5 pt-4 border-t border-border text-center space-y-1">
+        <p className="text-xs font-semibold text-text">
+          Julián Lozita
+        </p>
+        <p className="text-xs text-text-light leading-snug">
+          Asesor en decisiones patrimoniales e inmobiliarias
+        </p>
+        <p className="text-[11px] text-text-light/70 pt-1">
+          Corredor responsable: Ramiro Alaniz — CPI 7370
         </p>
       </div>
     </div>

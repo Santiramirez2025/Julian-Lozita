@@ -4,21 +4,21 @@ import { motion } from 'framer-motion'
 
 const testimonials = [
   {
-    name: 'María L.',
-    text: 'Julián me ayudó a encontrar mi casa en tiempo récord. Súper transparente y siempre disponible. Lo recomiendo a todos.',
-    property: 'Casa en Barrio Norte',
+    name: 'M.L.',
+    text: 'Tenía un conflicto familiar por una herencia y no sabíamos qué hacer. Julián nos ayudó a evaluar las opciones y tomar la mejor decisión para todos.',
+    property: 'Villa María',
     initials: 'ML',
   },
   {
-    name: 'Carlos R.',
-    text: 'Vendí mi departamento en menos de un mes. El sistema de QR hizo que mucha gente lo viera directo desde la calle. Excelente.',
-    property: 'Depto en Centro',
+    name: 'C.R.',
+    text: 'No sabía si comprar, construir o esperar. Julián analizó mi situación con números reales y me guió paso a paso. Tomé la mejor decisión.',
+    property: 'Villa María',
     initials: 'CR',
   },
   {
-    name: 'Ana P.',
-    text: 'Lo que más me gustó es el trato directo. Nada de intermediarios ni vueltas. Hablás con Julián y listo.',
-    property: 'Terreno en Palermo',
+    name: 'A.P.',
+    text: 'Lo que más me gustó es el trato directo. Hablás con Julián y con Ramiro y todo queda claro desde el primer día.',
+    property: 'Villa Nueva',
     initials: 'AP',
   },
 ]

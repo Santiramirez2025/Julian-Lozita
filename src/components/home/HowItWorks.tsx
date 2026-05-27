@@ -7,9 +7,9 @@ import Button from '@/components/ui/Button'
 const steps = [
   {
     number: '01',
-    title: 'Explorá propiedades',
+    title: 'Explorá',
     description:
-      'Buscá por tipo, zona o precio. Cada publicación tiene fotos reales, datos verificados y precio actualizado.',
+      'Buscá tu inversión por tipo, zona o precio.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" />
@@ -31,9 +31,9 @@ const steps = [
   },
   {
     number: '03',
-    title: 'Visitá y decidí',
+    title: 'Agendá y decidí',
     description:
-      'Coordinamos una visita en el horario que te sirva. Te acompañamos en todo el proceso hasta la escritura.',
+      'Coordinamos una reunión en el horario que te sirva. Te acompañamos en todo el proceso.',
     icon: (
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M22 11.08V12a10 10 0 11-5.93-9.14" />
@@ -67,13 +67,9 @@ export default function HowItWorks() {
             Simple y directo
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-text leading-tight mb-3">
-            Encontrá tu propiedad en{' '}
-            <span className="text-primary">3 pasos</span>
+            Pedí tu asesoramiento en{' '}
+            <span className="text-primary">3 simples pasos</span>
           </h2>
-          <p className="text-text-light text-sm sm:text-base max-w-lg mx-auto">
-            Sin intermediarios innecesarios, sin demoras. Atención personalizada
-            de principio a fin.
-          </p>
         </motion.div>
 
         {/* ── Steps ── */}

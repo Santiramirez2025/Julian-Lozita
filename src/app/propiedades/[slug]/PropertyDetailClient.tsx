@@ -126,16 +126,21 @@ export default function PropertyDetailClient({ property, similar }: Props) {
               {/* Julián personal message */}
               <div className="rounded-2xl border border-border p-5 bg-white">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
                     <span className="text-lg font-heading font-extrabold text-primary">JL</span>
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <p className="font-semibold text-text text-sm">Julián Lozita</p>
-                    <p className="text-xs text-text-light">Corredor inmobiliario</p>
+                    <p className="text-xs text-text-light leading-snug">
+                      Asesoramiento en decisiones patrimoniales e inmobiliarias
+                    </p>
                   </div>
                 </div>
                 <p className="text-sm text-text-light leading-relaxed">
-                  &ldquo;Soy Julián, escribime sin compromiso. Te cuento todo sobre esta propiedad y te ayudo a encontrar lo que buscás 👍&rdquo;
+                  &ldquo;Soy Julián, escribime sin compromiso. Te cuento todo sobre esta propiedad y te ayudo a encontrar lo que buscás.&rdquo;
+                </p>
+                <p className="text-xs text-text-light/70 mt-3 pt-3 border-t border-border">
+                  Corredor responsable: Ramiro Alaniz — CPI 7370
                 </p>
               </div>
 

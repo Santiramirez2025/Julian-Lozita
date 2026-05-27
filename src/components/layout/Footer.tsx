@@ -72,7 +72,7 @@ export default function Footer() {
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
-    { href: '/propiedades', label: 'Propiedades en venta' },
+    { href: '/propiedades', label: 'Oportunidades de inversión' },
     { href: '/contacto', label: 'Contacto' },
   ]
 
@@ -98,9 +98,9 @@ export default function Footer() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
               <div className="text-center sm:text-left relative z-10">
                 <h3 className="font-heading text-xl sm:text-2xl font-bold text-white leading-tight">
-                  ¿Tenés una decisión inmobiliaria por delante?
+                  ¿Tenés una decisión inmobiliaria-patrimonial por delante?
                 </h3>
-                <p className="text-white/40 text-sm mt-2 max-w-md">
+                <p className="text-white/60 text-sm mt-2 max-w-md">
                   Asesoramiento estratégico para que cada paso sume a tu patrimonio. Sin compromiso.
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group text-sm text-white/40 hover:text-white transition-colors duration-200 w-fit flex items-center gap-2"
+                  className="group text-sm text-accent/70 hover:text-accent transition-colors duration-200 w-fit flex items-center gap-2"
                 >
                   <span className="w-0 group-hover:w-3 h-px bg-accent transition-all duration-300" />
                   {link.label}
@@ -174,7 +174,7 @@ export default function Footer() {
                 <Link
                   key={zona.href}
                   href={zona.href}
-                  className="group text-sm text-white/40 hover:text-white transition-colors duration-200 w-fit flex items-center gap-2"
+                  className="group text-sm text-accent/70 hover:text-accent transition-colors duration-200 w-fit flex items-center gap-2"
                 >
                   <span className="w-0 group-hover:w-3 h-px bg-accent transition-all duration-300" />
                   {zona.label}

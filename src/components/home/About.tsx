@@ -6,18 +6,8 @@ import Button from '@/components/ui/Button'
 
 const values = [
   {
-    title: 'Visión patrimonial',
-    description: 'Pensamos cada decisión en función de tu patrimonio total, no de una operación aislada.',
-    icon: (
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2 4 7v6c0 4.5 3.5 8.5 8 9 4.5-.5 8-4.5 8-9V7l-8-5Z" />
-        <path d="M9 12l2 2 4-4" />
-      </svg>
-    ),
-  },
-  {
     title: 'Análisis de mercado',
-    description: 'Datos reales de Villa María y zona: precios, demanda, zonas que crecen y proyectos a pozo.',
+    description: 'Datos reales de Villa María, Villa Nueva y alrededores.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M3 3v18h18" />
@@ -27,13 +17,23 @@ const values = [
   },
   {
     title: 'Acompañamiento integral',
-    description: 'Te guío en cada paso: análisis, búsqueda, negociación y resguardo legal de la operación.',
+    description: 'Te guío en cada paso: análisis, búsqueda, negociación y protección de tu patrimonio.',
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20 21v-2a4 4 0 0 0-3-3.87" />
         <path d="M4 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
         <circle cx="10" cy="7" r="4" />
         <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Visión a largo plazo',
+    description: 'Pensamos cada decisión en función de tu patrimonio total, no de una operación aislada.',
+    icon: (
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M12 2 4 7v6c0 4.5 3.5 8.5 8 9 4.5-.5 8-4.5 8-9V7l-8-5Z" />
+        <path d="M9 12l2 2 4-4" />
       </svg>
     ),
   },
@@ -116,7 +116,7 @@ export default function About() {
                 Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante.
               </p>
               <p>
-                Te acompaño a evaluar cuándo comprar, qué comprar, dónde invertir, cuándo entrar a pozo o cómo reorganizar tus activos. Mi trabajo es que cada decisión sume a tu patrimonio en el largo plazo.
+                Te acompaño a evaluar tus decisiones: qué comprar, dónde invertir o cómo organizar tus activos.
               </p>
             </div>
 

@@ -47,7 +47,7 @@ const contactMethods = [
   },
   {
     label: 'Horario',
-    description: 'Lun–Vie 9–19h · Sáb 9–13h',
+    description: '24hs',
     href: null,
     iconBg: 'bg-primary/10',
     icon: (
@@ -91,13 +91,10 @@ export default function ContactoClient() {
               Contacto
             </p>
             <h1 className="text-3xl sm:text-4xl font-heading font-extrabold text-text leading-tight mb-3">
-              Hablá con Julián{' '}
-              <span className="text-primary">directamente</span>
+              Informate y consultá sobre{' '}
+              <span className="text-primary">asesoramiento inmobiliario-patrimonial</span>{' '}
+              en Villa María
             </h1>
-            <p className="text-text-light text-sm sm:text-base leading-relaxed">
-              Consultas sobre propiedades, tasaciones o asesoramiento inmobiliario
-              en Villa María. Sin compromiso, sin demoras.
-            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
@@ -240,7 +237,7 @@ export default function ContactoClient() {
                       onChange={(e) => setForm((p) => ({ ...p, mensaje: e.target.value }))}
                       rows={4}
                       className="w-full px-4 py-3 rounded-xl border border-border bg-white text-text placeholder:text-text-light/50 focus:border-primary-light focus:ring-2 focus:ring-primary-light/10 transition-all text-sm"
-                      placeholder="Ej: Busco casa de 3 dormitorios en Barrio Norte con cochera..."
+                      placeholder="Escribí tu consulta..."
                       required
                     />
                   </div>

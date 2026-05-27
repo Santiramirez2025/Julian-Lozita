@@ -5,10 +5,10 @@ import { useRef } from 'react'
 import Link from 'next/link'
 import Button from '@/components/ui/Button'
 
-const trustPoints = [
-  'Primera consulta sin cargo',
-  'Mirada estratégica',
-  'Confidencialidad',
+const trustPoints: { label: string; highlight: boolean }[] = [
+  { label: 'Primera consulta sin cargo', highlight: false },
+  { label: 'Mirada estratégica', highlight: true },
+  { label: 'Confidencialidad', highlight: true },
 ]
 
 export default function CTA() {
@@ -55,7 +55,7 @@ export default function CTA() {
                 transition={{ delay: 0.25, duration: 0.45 }}
                 className="text-2xl sm:text-3xl lg:text-4xl font-heading font-extrabold text-white leading-tight mb-4"
               >
-                Cada decisión inmobiliaria
+                Cada decisión
                 <br className="hidden sm:block" />
                 {' '}construye (o no) tu patrimonio
               </motion.h2>
@@ -67,7 +67,7 @@ export default function CTA() {
                 transition={{ delay: 0.35 }}
                 className="text-white/40 text-sm sm:text-base mb-8 max-w-lg mx-auto leading-relaxed"
               >
-                Contame qué estás pensando — comprar, invertir, entrar a pozo, reorganizar activos —
+                Contame qué estás pensando — comprar, invertir, reorganizar activos —
                 y armamos juntos el mejor camino para tu situación.
               </motion.p>
 
@@ -108,13 +108,25 @@ export default function CTA() {
               >
                 {trustPoints.map((point) => (
                   <span
-                    key={point}
-                    className="flex items-center gap-1.5 text-xs text-white/25"
+                    key={point.label}
+                    className={`flex items-center gap-1.5 text-xs font-medium ${
+                      point.highlight ? 'text-accent' : 'text-white/25'
+                    }`}
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent/40">
+                    <svg
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className={point.highlight ? 'text-accent' : 'text-accent/40'}
+                    >
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    {point}
+                    {point.label}
                   </span>
                 ))}
               </motion.div>
