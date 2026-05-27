@@ -64,7 +64,7 @@ export default function ContactoClient() {
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappDirectMessage = encodeURIComponent(
-    'Hola Julián, vi tu web y me gustaría consultar sobre una propiedad.'
+    'Hola Julián, me interesa recibir asesoramiento sobre una decisión inmobiliaria/patrimonial.'
   )
 
   const handleSubmit = (e: React.FormEvent) => {

@@ -49,7 +49,7 @@ export default function HowItWorks() {
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
   const whatsappMessage = encodeURIComponent(
-    'Hola Julián, quiero consultar por una propiedad en Villa María.'
+    'Hola Julián, me interesa recibir asesoramiento sobre una decisión inmobiliaria/patrimonial.'
   )
 
   return (

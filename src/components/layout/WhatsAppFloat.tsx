@@ -7,7 +7,7 @@ export default function WhatsAppFloat() {
 
   return (
     <motion.a
-      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola Julián! Estoy interesado en propiedades en Villa María.')}`}
+      href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent('Hola Julián, me interesa recibir asesoramiento sobre una decisión inmobiliaria/patrimonial.')}`}
       target="_blank"
       rel="noopener noreferrer"
       initial={{ scale: 0, opacity: 0 }}
