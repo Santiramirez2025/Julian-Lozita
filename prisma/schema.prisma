@@ -57,6 +57,8 @@ model Property {
   hasFinancing    Boolean @default(false)  // 💸 Financiación posible
   urgentSale      Boolean @default(false)  // ⚡ Urgente venta
   negotiable      Boolean @default(true)   // Precio negociable
+  forBusiness     Boolean @default(false)  // 💼 Oportunidad de negocio
+  forPatrimony    Boolean @default(false)  // 🏛️ Inversión patrimonial
 
   // SEO
   metaTitle       String?

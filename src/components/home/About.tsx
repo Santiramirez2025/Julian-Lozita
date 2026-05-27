@@ -112,8 +112,8 @@ export default function About() {
 
             <div className="space-y-3 text-text-light text-sm sm:text-base leading-relaxed mb-8">
               <p>
-                Soy Julián Lozita. No vendo propiedades: te asesoro para tomar mejores decisiones inmobiliarias y patrimoniales en Villa María y la región. Trabajo con un enfoque claro:{' '}
-                <span className="text-text font-medium">analizar tu situación, entender tus objetivos y proponer caminos concretos.</span>
+                <span className="text-text font-medium">Julián NO es un profesional que vende casas.</span>{' '}
+                Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante.
               </p>
               <p>
                 Te acompaño a evaluar cuándo comprar, qué comprar, dónde invertir, cuándo entrar a pozo o cómo reorganizar tus activos. Mi trabajo es que cada decisión sume a tu patrimonio en el largo plazo.

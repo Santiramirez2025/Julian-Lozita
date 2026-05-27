@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: '%s | J-Lozita Villa María',
   },
   description:
-    'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María y zona. Análisis, inversión, pozo y resguardo de activos.',
+    'Julián NO es un profesional que vende casas. Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante. Villa María, Córdoba.',
   keywords: [
     'asesor inmobiliario villa maría',
     'asesoramiento patrimonial villa maría',
@@ -40,10 +40,10 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_AR',
     url: 'https://julianlozita.com',
-    siteName: 'J-Lozita — Estrategia Inmobiliaria & Patrimonial',
+    siteName: 'J-Lozita — Asesoramiento y Estrategia Inmobiliaria & Patrimonial',
     title: 'J-Lozita | Estrategia Inmobiliaria & Patrimonial en Villa María',
     description:
-      'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María y zona.',
+      'Julián NO es un profesional que vende casas. Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante.',
   },
   twitter: {
     card: 'summary_large_image',
@@ -59,9 +59,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': ['RealEstateAgent', 'ProfessionalService'],
-    name: 'J-Lozita — Estrategia Inmobiliaria & Patrimonial',
+    name: 'J-Lozita — Asesoramiento y Estrategia Inmobiliaria & Patrimonial',
     description:
-      'Asesoramiento estratégico en decisiones inmobiliarias y construcción de patrimonio en Villa María, Córdoba, Argentina. Análisis de mercado, inversión, pozo y resguardo de activos.',
+      'Julián NO es un profesional que vende casas. Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante. Villa María, Córdoba, Argentina.',
     url: 'https://julianlozita.com',
     areaServed: {
       '@type': 'City',

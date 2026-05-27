@@ -28,6 +28,8 @@ export interface Property {
   hasFinancing: boolean
   urgentSale: boolean
   negotiable: boolean
+  forBusiness: boolean
+  forPatrimony: boolean
   metaTitle: string | null
   metaDescription: string | null
   createdAt: Date
@@ -60,6 +62,8 @@ export interface PropertyFormData {
   hasFinancing: boolean
   urgentSale: boolean
   negotiable: boolean
+  forBusiness: boolean
+  forPatrimony: boolean
   metaTitle?: string
   metaDescription?: string
 }

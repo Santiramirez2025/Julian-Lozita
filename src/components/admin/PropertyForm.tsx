@@ -87,6 +87,8 @@ export default function PropertyForm({ property }: PropertyFormProps) {
     hasFinancing: property?.hasFinancing || false,
     urgentSale: property?.urgentSale || false,
     negotiable: property?.negotiable ?? true,
+    forBusiness: property?.forBusiness || false,
+    forPatrimony: property?.forPatrimony || false,
     metaTitle: property?.metaTitle || '',
     metaDescription: property?.metaDescription || '',
   })
@@ -484,6 +486,8 @@ export default function PropertyForm({ property }: PropertyFormProps) {
             { key: 'hasFinancing' as const, label: 'Financiación', desc: 'Posibilidad de cuotas' },
             { key: 'urgentSale' as const, label: 'Venta urgente', desc: 'Marca de oportunidad' },
             { key: 'negotiable' as const, label: 'Precio negociable', desc: 'Acepta ofertas' },
+            { key: 'forBusiness' as const, label: 'Negocios', desc: 'Apta para inversión / renta' },
+            { key: 'forPatrimony' as const, label: 'Patrimonio', desc: 'Resguardo de valor a largo plazo' },
           ].map((opt) => (
             <label
               key={opt.key}

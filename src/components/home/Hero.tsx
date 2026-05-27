@@ -75,10 +75,11 @@ export default function Hero() {
           </motion.p>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold text-white leading-[1.08] mb-6">
-            Asesoramiento estratégico en decisiones inmobiliarias y construcción de{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-white/70">
-              patrimonio
-            </span>
+            Julián{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-white">
+              NO
+            </span>{' '}
+            es un profesional que vende casas.
           </h1>
 
           {/* Badge profesional */}
@@ -109,8 +110,8 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <p className="text-base sm:text-lg text-white/50 mb-10 max-w-lg leading-relaxed">
-            Te acompaño a decidir cuándo comprar, qué comprar y cómo proteger y hacer crecer tu patrimonio. Análisis claro, mirada local y trato directo.
+          <p className="text-base sm:text-lg text-white/60 mb-10 max-w-xl leading-relaxed">
+            Es un asesor al que le consultás antes de tomar una decisión inmobiliaria o patrimonial importante.
           </p>
 
           {/* Search bar */}
