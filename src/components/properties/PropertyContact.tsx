@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
 import { getWhatsAppLink, getPropertyWhatsAppMessage } from '@/lib/utils'
 
@@ -29,16 +30,38 @@ export default function PropertyContact({ title, neighborhood }: PropertyContact
         </Button>
       </a>
 
-      <div className="mt-5 pt-4 border-t border-border text-center space-y-1">
-        <p className="text-xs font-semibold text-text">
-          Julián Lozita
-        </p>
-        <p className="text-xs text-text-light leading-snug">
-          Asesor en decisiones patrimoniales e inmobiliarias
-        </p>
-        <p className="text-[11px] text-text-light/70 pt-1">
-          Corredor responsable: Ramiro Alaniz — CPI 7370
-        </p>
+      <div className="mt-5 pt-4 border-t border-border space-y-3">
+        <div className="flex items-center gap-3">
+          <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+            <Image
+              src="/images/julian.jpg"
+              alt="Julián Lozita"
+              fill
+              className="object-cover object-[center_20%]"
+              sizes="48px"
+            />
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-semibold text-text leading-tight">Julián Lozita</p>
+            <p className="text-xs text-text-light leading-snug">
+              Asesor en decisiones patrimoniales e inmobiliarias
+            </p>
+          </div>
+        </div>
+        <div className="flex items-center gap-3">
+          <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+            <Image
+              src="/images/ramiro.jpg"
+              alt="Ramiro Alaniz"
+              fill
+              className="object-cover object-[center_20%]"
+              sizes="40px"
+            />
+          </div>
+          <p className="text-[11px] text-text-light/70 leading-snug">
+            Corredor responsable: Ramiro Alaniz — CPI 7370
+          </p>
+        </div>
       </div>
     </div>
   )

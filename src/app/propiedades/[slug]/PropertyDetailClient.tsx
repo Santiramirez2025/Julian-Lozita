@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
@@ -126,8 +127,14 @@ export default function PropertyDetailClient({ property, similar }: Props) {
               {/* Julián personal message */}
               <div className="rounded-2xl border border-border p-5 bg-white">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-11 h-11 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <span className="text-lg font-heading font-extrabold text-primary">JL</span>
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+                    <Image
+                      src="/images/julian.jpg"
+                      alt="Julián Lozita"
+                      fill
+                      className="object-cover object-[center_20%]"
+                      sizes="56px"
+                    />
                   </div>
                   <div className="min-w-0">
                     <p className="font-semibold text-text text-sm">Julián Lozita</p>

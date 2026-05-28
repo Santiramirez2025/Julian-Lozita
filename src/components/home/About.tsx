@@ -2,6 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import Button from '@/components/ui/Button'
 
 const values = [
@@ -60,26 +61,14 @@ export default function About() {
             className="lg:col-span-2 relative"
           >
             <div className="relative aspect-[4/5] sm:aspect-[3/4] rounded-2xl overflow-hidden bg-gradient-to-br from-primary/5 to-accent/5 border border-border">
-              {/* 
-                Para poner la foto real de Julián:
-                1. Poné la imagen en public/images/julian.jpg
-                2. Descomentá el Image de abajo
-                3. Borrá el bloque "Placeholder"
-              */}
-              {/* <Image
+              <Image
                 src="/images/julian.jpg"
                 alt="Julián Lozita — Asesor en estrategia inmobiliaria y patrimonial en Villa María"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 40vw"
-              /> */}
-
-              {/* Placeholder — borrar cuando esté la foto real */}
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <img src="/images/logo-mark.svg" alt="JL" className="w-24 h-24 mb-4" />
-                <p className="text-text font-heading font-semibold">Julián Lozita</p>
-                <p className="text-text-light text-sm">Estrategia inmobiliaria & patrimonial</p>
-              </div>
+                priority
+              />
             </div>
 
             {/* Experience badge */}

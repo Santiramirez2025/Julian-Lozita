@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
@@ -87,20 +88,37 @@ export default function PropiedadesClient() {
             </p>
           </div>
 
-          <div className="mb-8 rounded-2xl border border-border bg-white p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-primary/5 border border-primary/10 flex items-center justify-center shrink-0">
-              <img
-                src="/images/logo-mark.svg"
-                alt="Julián Lozita"
-                className="w-10 h-10 sm:w-12 sm:h-12"
-              />
+          <div className="mb-8 rounded-2xl border border-border bg-white p-5 sm:p-6">
+            <div className="flex items-center gap-4">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+                <Image
+                  src="/images/julian.jpg"
+                  alt="Julián Lozita"
+                  fill
+                  className="object-cover object-[center_20%]"
+                  sizes="56px"
+                />
+              </div>
+              <div className="min-w-0">
+                <p className="text-base sm:text-lg font-heading font-bold text-text leading-tight">
+                  Julián Lozita
+                </p>
+                <p className="text-xs sm:text-sm text-text-light leading-snug">
+                  Asesor en decisiones patrimoniales e inmobiliarias
+                </p>
+              </div>
             </div>
-            <div className="min-w-0">
-              <p className="text-base sm:text-lg font-heading font-bold text-text leading-tight">
-                Julián Lozita
-                <span className="text-text-light font-normal"> — Asesor en decisiones patrimoniales e inmobiliarias</span>
-              </p>
-              <p className="text-xs sm:text-sm text-text-light mt-1.5">
+            <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border">
+              <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-white shadow-md shrink-0">
+                <Image
+                  src="/images/ramiro.jpg"
+                  alt="Ramiro Alaniz"
+                  fill
+                  className="object-cover object-[center_20%]"
+                  sizes="40px"
+                />
+              </div>
+              <p className="text-xs sm:text-sm text-text-light/70 leading-snug">
                 Corredor responsable: Ramiro Alaniz — CPI 7370
               </p>
             </div>
