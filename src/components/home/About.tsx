@@ -70,17 +70,6 @@ export default function About() {
                 priority
               />
             </div>
-
-            {/* Experience badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-              transition={{ delay: 0.3, duration: 0.4 }}
-              className="absolute -bottom-4 left-4 sm:-bottom-5 sm:left-6 glass rounded-xl px-5 py-3 shadow-lg"
-            >
-              <p className="font-heading font-extrabold text-2xl text-primary leading-none">5+</p>
-              <p className="text-text-light text-xs mt-0.5">Años asesorando</p>
-            </motion.div>
           </motion.div>
 
           {/* Text column */}
