@@ -27,6 +27,9 @@ export const barriosVillaMaria: Barrio[] = [
   { slug: 'domingo-faustino-sarmiento', name: 'Domingo Faustino Sarmiento', city: 'Villa María' },
   { slug: 'santa-ana', name: 'Santa Ana', city: 'Villa María' },
   { slug: 'rivadavia', name: 'Rivadavia', city: 'Villa María' },
+  { slug: 'san-justo', name: 'San Justo', city: 'Villa María' },
+  { slug: 'costanera', name: 'Costanera', city: 'Villa María' },
+  { slug: 'altos-del-rio', name: 'Altos del Río', city: 'Villa María' },
 ]
 
 export const barriosVillaNueva: Barrio[] = [
