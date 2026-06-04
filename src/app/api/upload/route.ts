@@ -16,8 +16,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'No se recibió imagen' }, { status: 400 })
     }
 
-    const url = await uploadImage(image)
-    return NextResponse.json({ url })
+    const { url, thumbnail } = await uploadImage(image)
+    return NextResponse.json({ url, thumbnail })
   } catch (error) {
     console.error('Upload error:', error)
     return NextResponse.json({ error: 'Error al subir imagen' }, { status: 500 })
