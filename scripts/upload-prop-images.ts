@@ -4,8 +4,9 @@ import { PrismaClient } from '@prisma/client'
 import { v2 as cloudinary } from 'cloudinary'
 import { uploadImage } from '../src/lib/cloudinary'
 
-const SLUG = 'casa-premium-en-costa-de-oro'
-const DIR = 'public/temp/prop1'
+const SLUG = 'casa-centrica-4-dormitorios'
+const DIR = 'public/temp/prop3'
+const FOLDER = `j-lozita/${SLUG}`
 
 // Carga simple de .env.local / .env sin dependencia de dotenv.
 // Solo setea variables que aún no estén definidas en process.env.
@@ -73,7 +74,7 @@ async function main() {
     process.exit(1)
   }
 
-  console.log(`Subiendo ${files.length} imágenes desde ${DIR}\n`)
+  console.log(`Subiendo ${files.length} imágenes desde ${DIR} → ${FOLDER}\n`)
 
   const urls: string[] = []
   for (let i = 0; i < files.length; i++) {
@@ -81,7 +82,7 @@ async function main() {
     const buf = readFileSync(path)
     const base64 = 'data:image/jpeg;base64,' + buf.toString('base64')
     process.stdout.write(`  [${String(i + 1).padStart(2, '0')}/${files.length}] ${files[i]}  →  `)
-    const { url } = await uploadImage(base64)
+    const { url } = await uploadImage(base64, FOLDER)
     urls.push(url)
     console.log(url)
   }

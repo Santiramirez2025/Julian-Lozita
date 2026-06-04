@@ -13,12 +13,15 @@ export interface UploadResult {
   thumbnail: string
 }
 
-export async function uploadImage(base64: string): Promise<UploadResult> {
+export async function uploadImage(
+  base64: string,
+  folder: string = 'j-lozita',
+): Promise<UploadResult> {
   // Subimos una sola vez (limitando a 1920px para acotar almacenamiento).
   // Las versiones de entrega se generan on-the-fly vía transformaciones de URL,
   // que Cloudinary cachea en su CDN: más eficiente que procesar en el servidor.
   const result = await cloudinary.uploader.upload(base64, {
-    folder: 'j-lozita',
+    folder,
     transformation: [{ width: 1920, crop: 'limit' }],
   })
 
