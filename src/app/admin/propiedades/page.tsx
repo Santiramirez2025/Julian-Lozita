@@ -42,6 +42,26 @@ export default function AdminPropiedadesPage() {
     }
   }
 
+  const togglePublished = async (id: string, current: boolean) => {
+    setProperties((prev) =>
+      prev.map((p) => (p.id === id ? { ...p, published: !current } : p)),
+    )
+    try {
+      const res = await fetch(`/api/propiedades/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ published: !current }),
+      })
+      if (!res.ok) throw new Error()
+      toast.success(current ? 'Propiedad oculta' : 'Propiedad publicada')
+    } catch {
+      setProperties((prev) =>
+        prev.map((p) => (p.id === id ? { ...p, published: current } : p)),
+      )
+      toast.error('No se pudo actualizar')
+    }
+  }
+
   const filtered = filter
     ? properties.filter((p) => p.status === filter)
     : properties
@@ -109,7 +129,30 @@ export default function AdminPropiedadesPage() {
                 </div>
               </div>
               <div className="flex items-center gap-2 flex-wrap">
-              <QRDownloader propertyId={p.id} slug={p.slug} />
+                <button
+                  type="button"
+                  onClick={() => togglePublished(p.id, p.published)}
+                  title={p.published ? 'Ocultar al público' : 'Publicar al público'}
+                  aria-label={p.published ? 'Ocultar propiedad' : 'Publicar propiedad'}
+                  className={`w-9 h-9 rounded-xl border flex items-center justify-center transition-all ${
+                    p.published
+                      ? 'border-border bg-white text-text-light hover:border-primary/30 hover:text-primary'
+                      : 'border-amber-200 bg-amber-50 text-amber-700 hover:bg-amber-100'
+                  }`}
+                >
+                  {p.published ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
+                    </svg>
+                  )}
+                </button>
+                <QRDownloader propertyId={p.id} slug={p.slug} />
                 <Link href={`/admin/propiedades/${p.id}/editar`}>
                   <Button variant="secondary" size="sm">✏️ Editar</Button>
                 </Link>
