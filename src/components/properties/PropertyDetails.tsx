@@ -24,7 +24,7 @@ export default function PropertyDetails({ property }: PropertyDetailsProps) {
         <span className="price-display text-3xl sm:text-4xl text-primary">
           {formatPrice(property.price, property.currency)}
         </span>
-        {property.currency === 'USD' && (
+        {property.currency === 'USD' && property.price > 0 && (
           <p className="text-text-light text-sm mt-1">
             Precio en dólares estadounidenses
           </p>

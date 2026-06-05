@@ -97,7 +97,7 @@ export default function ScoringPage() {
                   )}
                   <div className="min-w-0">
                     <p className="font-semibold text-text text-sm truncate">{s.property?.title}</p>
-                    <p className="text-xs text-text-light">{s.property?.neighborhood} · {s.property?.currency} {s.property?.price?.toLocaleString()}</p>
+                    <p className="text-xs text-text-light">{s.property?.neighborhood} · {s.property?.price && s.property.price > 0 ? `${s.property.currency} ${s.property.price.toLocaleString()}` : 'Precio a consultar'}</p>
                     <div className="flex gap-1 mt-1">
                       <Badge variant={s.heatScore > 50 ? 'danger' : s.heatScore > 25 ? 'warning' : 'default'}>
                         Score: {Math.round(s.heatScore)}/100

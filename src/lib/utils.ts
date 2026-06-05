@@ -1,4 +1,5 @@
 export function formatPrice(price: number, currency: string = 'USD'): string {
+  if (!price || price <= 0) return 'Precio a consultar'
   if (currency === 'USD') {
     return `USD ${price.toLocaleString('es-AR')}`
   }

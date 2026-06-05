@@ -71,7 +71,7 @@ export function getDescriptionPrompt(data: {
 - m² totales: ${data.totalArea || 'No especificado'}
 - m² cubiertos: ${data.coveredArea || 'No especificado'}
 - Características: ${data.features.length > 0 ? data.features.join(', ') : 'No especificadas'}
-- Precio: ${data.currency} ${data.price.toLocaleString()}
+- Precio: ${data.price > 0 ? `${data.currency} ${data.price.toLocaleString()}` : 'A consultar'}
 
 Escribí en argentino, tono profesional pero cercano. 2-3 párrafos que vendan la propiedad.
 También generá un meta title (máximo 60 caracteres) y meta description (máximo 155 caracteres) optimizados para SEO con keywords "propiedad en venta villa maría".

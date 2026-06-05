@@ -46,7 +46,7 @@ export default function AIDescriptionGenerator({ propertyData, onGenerated }: AI
     }
   }
 
-  const isReady = propertyData.propertyType && propertyData.neighborhood && propertyData.price > 0
+  const isReady = !!(propertyData.propertyType && propertyData.neighborhood)
 
   return (
     <div className="flex items-center gap-3">

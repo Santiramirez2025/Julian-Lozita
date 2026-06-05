@@ -116,13 +116,15 @@ export default function PropertyDetailClient({ property, similar }: Props) {
                 </a>
               )}
 
-              {/* Price simulator */}
-              <PriceSimulator
-                price={property.price}
-                currency={property.currency}
-                title={property.title}
-                neighborhood={property.neighborhood}
-              />
+              {/* Price simulator — solo si hay precio (no aplica a "Precio a consultar") */}
+              {property.price > 0 && (
+                <PriceSimulator
+                  price={property.price}
+                  currency={property.currency}
+                  title={property.title}
+                  neighborhood={property.neighborhood}
+                />
+              )}
 
               {/* Julián personal message */}
               <div className="rounded-2xl border border-border p-5 bg-white">

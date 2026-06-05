@@ -59,6 +59,7 @@ export default function PropertyForm({ property }: PropertyFormProps) {
   const router = useRouter()
   const [saving, setSaving] = useState(false)
   const [isDirty, setIsDirty] = useState(false)
+  const [priceOnRequest, setPriceOnRequest] = useState(() => property?.price === 0)
   const isEditing = !!property
 
   const [form, setForm] = useState<PropertyFormData>({
@@ -122,8 +123,12 @@ export default function PropertyForm({ property }: PropertyFormProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!form.title || !form.price || !form.address || !form.neighborhood) {
+    if (!form.title || !form.address || !form.neighborhood) {
       toast.error('Completá los campos obligatorios')
+      return
+    }
+    if (!priceOnRequest && !form.price) {
+      toast.error('Ingresá un precio o marcá "Precio a consultar"')
       return
     }
     if (form.images.length === 0 || !form.coverImage) {
@@ -162,7 +167,16 @@ export default function PropertyForm({ property }: PropertyFormProps) {
     }
   }
 
-  const formattedPrice = form.price > 0 ? formatPrice(form.price, form.currency) : null
+  const formattedPrice = priceOnRequest
+    ? 'Precio a consultar'
+    : form.price > 0
+      ? formatPrice(form.price, form.currency)
+      : null
+
+  const togglePriceOnRequest = (next: boolean) => {
+    setPriceOnRequest(next)
+    updateField('price', 0)
+  }
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -198,10 +212,20 @@ export default function PropertyForm({ property }: PropertyFormProps) {
               <Input
                 label="Precio *"
                 type="number"
-                value={form.price || ''}
+                value={priceOnRequest ? '' : form.price || ''}
                 onChange={(e) => updateField('price', parseFloat(e.target.value) || 0)}
-                placeholder="85000"
+                placeholder={priceOnRequest ? 'A consultar' : '85000'}
+                disabled={priceOnRequest}
               />
+              <label className="flex items-center gap-2 mt-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={priceOnRequest}
+                  onChange={(e) => togglePriceOnRequest(e.target.checked)}
+                  className="w-4 h-4 rounded border-border accent-primary cursor-pointer"
+                />
+                <span className="text-xs text-text-light">Precio a consultar</span>
+              </label>
               {formattedPrice && (
                 <p className="text-xs text-primary font-mono mt-1.5">{formattedPrice}</p>
               )}
@@ -212,6 +236,7 @@ export default function PropertyForm({ property }: PropertyFormProps) {
                 options={currencyOptions}
                 value={form.currency}
                 onChange={(e) => updateField('currency', e.target.value)}
+                disabled={priceOnRequest}
               />
             </div>
           </div>

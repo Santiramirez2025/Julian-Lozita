@@ -1,6 +1,7 @@
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { prisma } from '@/lib/prisma'
+import { formatPrice } from '@/lib/utils'
 import PropertyDetailClient from './PropertyDetailClient'
 
 interface Props {
@@ -16,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = property.metaTitle || `${property.title} en Venta`
   const description =
     property.metaDescription ||
-    `${property.title} en ${property.neighborhood}, Villa María. ${property.currency} ${property.price.toLocaleString()}.`
+    `${property.title} en ${property.neighborhood}, Villa María. ${formatPrice(property.price, property.currency)}.`
 
   return {
     title,
@@ -69,8 +70,10 @@ export default async function PropertyPage({ params }: Props) {
     image: property.images,
     offers: {
       '@type': 'Offer',
-      price: property.price,
-      priceCurrency: property.currency,
+      ...(property.price > 0 && {
+        price: property.price,
+        priceCurrency: property.currency,
+      }),
       availability:
         property.status === 'available'
           ? 'https://schema.org/InStock'
