@@ -4,9 +4,9 @@ import { PrismaClient } from '@prisma/client'
 import { v2 as cloudinary } from 'cloudinary'
 import { uploadImage } from '../src/lib/cloudinary'
 
-const SLUG = 'casa-centrica-4-dormitorios'
-const DIR = 'public/temp/prop3'
-const FOLDER = `j-lozita/${SLUG}`
+const SLUG = 'casa-frente-al-rio-sobre-av-costanera'
+const DIR = 'public/temp/prop5'
+const FOLDER = 'j-lozita/casa-costanera'
 
 // Carga simple de .env.local / .env sin dependencia de dotenv.
 // Solo setea variables que aún no estén definidas en process.env.
