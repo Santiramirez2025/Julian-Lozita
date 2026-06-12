@@ -9,23 +9,39 @@ import {
   type PanInfo,
   type Variants,
 } from 'framer-motion'
+import IPhoneFrame from './IPhoneFrame'
 
 interface PropertyGalleryProps {
   images: string[]
   title: string
+  videoUrl?: string | null
+  videoPoster?: string | null
 }
 
 const AUTOPLAY_MS = 5000
-// Curva cúbica de iOS — se siente nativa, no animada
 const IOS_EASE = [0.32, 0.72, 0, 1] as const
 
-// Reescribe la URL de Cloudinary para servir un thumbnail real
-// (cuadrado 200×200, q=70) en vez de la full 1920px que rendereamos a 80px.
+// Reescribe la URL de Cloudinary para entregar un thumbnail real
+// (cuadrado 200×200, q=70) en lugar de la full 1920px.
 function toThumbUrl(url: string): string {
   return url.replace(
     /c_limit,f_auto,q_\d+,w_\d+/,
     'c_fill,f_auto,q_70,w_200,h_200',
   )
+}
+
+// Para el poster del video: si es URL de Cloudinary, aplicamos transformaciones
+// para servir un frame de baja resolución (q=auto, w=720). Si no, devolvemos tal cual.
+function videoPosterOrDerived(poster: string | null | undefined, videoUrl: string): string | undefined {
+  if (poster) return poster
+  // Cloudinary video URL → derivar poster con eo_0 (frame 0)
+  // Ej: /video/upload/v.../folder/clip.mp4 → /video/upload/so_0,w_720,q_auto/.../clip.jpg
+  if (/res\.cloudinary\.com\/.+\/video\/upload\//.test(videoUrl)) {
+    return videoUrl
+      .replace('/video/upload/', '/video/upload/so_0,w_720,q_auto,f_jpg/')
+      .replace(/\.(mp4|webm|mov)$/i, '.jpg')
+  }
+  return undefined
 }
 
 const slideVariants: Variants = {
@@ -40,7 +56,12 @@ const fadeVariants: Variants = {
   exit: { opacity: 0 },
 }
 
-export default function PropertyGallery({ images, title }: PropertyGalleryProps) {
+export default function PropertyGallery({
+  images,
+  title,
+  videoUrl,
+  videoPoster,
+}: PropertyGalleryProps) {
   const prefersReducedMotion = useReducedMotion()
   const [selectedIndex, setSelectedIndex] = useState(0)
   const [direction, setDirection] = useState(0)
@@ -48,10 +69,14 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
   const [lightboxOpen, setLightboxOpen] = useState(false)
   const thumbsRef = useRef<HTMLDivElement>(null)
 
-  // Arranca el autoplay después del mount, salvo prefers-reduced-motion
+  const hasVideo = !!videoUrl
+  const variants = prefersReducedMotion ? fadeVariants : slideVariants
+
+  // Autoplay solo en modo galería iOS (sin video)
   useEffect(() => {
+    if (hasVideo) return
     if (!prefersReducedMotion && images.length > 1) setIsPlaying(true)
-  }, [prefersReducedMotion, images.length])
+  }, [prefersReducedMotion, images.length, hasVideo])
 
   const goNext = useCallback(() => {
     setDirection(1)
@@ -72,13 +97,14 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
     [selectedIndex],
   )
 
-  // Mantiene el thumb activo dentro del viewport
+  // Thumb activo a la vista (modo iOS)
   useEffect(() => {
+    if (hasVideo) return
     const el = thumbsRef.current?.children[selectedIndex] as HTMLElement | undefined
     el?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-  }, [selectedIndex])
+  }, [selectedIndex, hasVideo])
 
-  // Lightbox: scroll lock + teclado
+  // Lightbox: teclado + scroll lock
   useEffect(() => {
     if (!lightboxOpen) return
     const prevOverflow = document.body.style.overflow
@@ -101,7 +127,13 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
     setIsPlaying(false)
   }
 
-  if (images.length === 0) {
+  const openLightboxAt = (idx: number) => {
+    setSelectedIndex(idx)
+    setDirection(0)
+    setLightboxOpen(true)
+  }
+
+  if (images.length === 0 && !hasVideo) {
     return (
       <div className="aspect-[3/4] md:aspect-[4/3] rounded-3xl bg-bg-dark flex items-center justify-center">
         <p className="text-white/40 text-sm">Sin imágenes</p>
@@ -109,15 +141,80 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
     )
   }
 
+  // ╔══════════════════════════════════════════════════════════════╗
+  // ║   MODO VIDEO — Marco iPhone + grid de thumbnails             ║
+  // ╚══════════════════════════════════════════════════════════════╝
+  if (hasVideo) {
+    const poster = videoPosterOrDerived(videoPoster, videoUrl)
+
+    return (
+      <>
+        <div className="space-y-6">
+          {/* iPhone con video */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: IOS_EASE }}
+            className="py-4"
+          >
+            <IPhoneFrame>
+              <video
+                src={videoUrl}
+                poster={poster}
+                controls
+                playsInline
+                preload="metadata"
+                className="w-full h-full object-cover"
+              >
+                Tu navegador no soporta video HTML5.
+              </video>
+            </IPhoneFrame>
+          </motion.div>
+
+          {/* Thumbnails — fotos de la propiedad */}
+          {images.length > 0 && (
+            <div>
+              <h3 className="font-heading font-semibold text-text text-sm mb-3 px-1">
+                Más fotos
+              </h3>
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-2.5">
+                {images.map((img, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => openLightboxAt(index)}
+                    aria-label={`Ver foto ${index + 1}`}
+                    className="group relative aspect-square rounded-xl overflow-hidden bg-bg-dark shadow-sm hover:shadow-md transition-all"
+                  >
+                    <Image
+                      src={toThumbUrl(img)}
+                      alt={`${title} - Foto ${index + 1}`}
+                      fill
+                      className="object-cover transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 640px) 33vw, 25vw"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors" />
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+
+        {renderLightbox()}
+      </>
+    )
+  }
+
+  // ╔══════════════════════════════════════════════════════════════╗
+  // ║   MODO GALERÍA — iOS-style con autoplay (sin video)          ║
+  // ╚══════════════════════════════════════════════════════════════╝
   const autoplay = isPlaying && !lightboxOpen && images.length > 1
-  const variants = prefersReducedMotion ? fadeVariants : slideVariants
 
   return (
     <>
       <div className="space-y-3">
-        {/* ── Main viewer ── */}
         <div className="relative aspect-[3/4] md:aspect-[4/3] rounded-3xl overflow-hidden shadow-xl shadow-black/10 bg-bg-dark select-none">
-          {/* Capa de slides con drag/swipe */}
           <motion.div
             className="absolute inset-0"
             drag={images.length > 1 ? 'x' : false}
@@ -150,7 +247,6 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
             </AnimatePresence>
           </motion.div>
 
-          {/* Barra de progreso del autoplay (estilo Stories) */}
           {autoplay && (
             <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-white/10 z-10 pointer-events-none">
               <motion.div
@@ -166,7 +262,6 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
             </div>
           )}
 
-          {/* Play / pause (top-right, frosted glass) */}
           {images.length > 1 && (
             <button
               type="button"
@@ -190,12 +285,10 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
             </button>
           )}
 
-          {/* Counter (bottom-right) */}
           <div className="absolute bottom-4 right-4 bg-black/40 backdrop-blur-md text-white text-xs font-medium px-3 py-1.5 rounded-full z-10 tracking-wide">
             {selectedIndex + 1} / {images.length}
           </div>
 
-          {/* "Ver todas" (bottom-left, si hay > 5) */}
           {images.length > 5 && (
             <button
               type="button"
@@ -225,7 +318,6 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
           )}
         </div>
 
-        {/* ── Thumbnails ── */}
         {images.length > 1 && (
           <div
             ref={thumbsRef}
@@ -256,7 +348,12 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
         )}
       </div>
 
-      {/* ── Lightbox fullscreen ── */}
+      {renderLightbox()}
+    </>
+  )
+
+  function renderLightbox() {
+    return (
       <AnimatePresence>
         {lightboxOpen && (
           <motion.div
@@ -267,7 +364,6 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
             className="fixed inset-0 bg-black z-50 flex items-center justify-center select-none"
             onClick={() => setLightboxOpen(false)}
           >
-            {/* Close */}
             <button
               type="button"
               className="absolute top-4 right-4 text-white/70 hover:text-white p-2 z-20"
@@ -291,12 +387,10 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
               </svg>
             </button>
 
-            {/* Counter */}
             <div className="absolute top-4 left-1/2 -translate-x-1/2 text-white/90 text-sm font-medium bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full z-20 tracking-wide">
               {selectedIndex + 1} / {images.length}
             </div>
 
-            {/* Arrows — desktop */}
             {images.length > 1 && (
               <>
                 <button
@@ -308,16 +402,7 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
                   }}
                   aria-label="Anterior"
                 >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M15 18l-6-6 6-6" />
                   </svg>
                 </button>
@@ -330,23 +415,13 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
                   }}
                   aria-label="Siguiente"
                 >
-                  <svg
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M9 18l6-6-6-6" />
                   </svg>
                 </button>
               </>
             )}
 
-            {/* Imagen con scale-in spring + swipe + slide entre fotos */}
             <motion.div
               className="relative w-[92vw] h-[80vh]"
               drag={images.length > 1 ? 'x' : false}
@@ -383,6 +458,6 @@ export default function PropertyGallery({ images, title }: PropertyGalleryProps)
           </motion.div>
         )}
       </AnimatePresence>
-    </>
-  )
+    )
+  }
 }

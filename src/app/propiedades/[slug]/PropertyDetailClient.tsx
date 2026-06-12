@@ -66,7 +66,12 @@ export default function PropertyDetailClient({ property, similar }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left column: gallery + details */}
             <div className="lg:col-span-2 space-y-8">
-              <PropertyGallery images={property.images} title={property.title} />
+              <PropertyGallery
+                images={property.images}
+                title={property.title}
+                videoUrl={property.videoUrl}
+                videoPoster={property.videoPoster}
+              />
               <PropertyDetails property={property} />
 
               {/* Map */}

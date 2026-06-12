@@ -81,6 +81,8 @@ export default function PropertyForm({ property }: PropertyFormProps) {
     features: property?.features || [],
     images: property?.images || [],
     coverImage: property?.coverImage || '',
+    videoUrl: property?.videoUrl || '',
+    videoPoster: property?.videoPoster || '',
     status: property?.status || 'available',
     featured: property?.featured || false,
     published: property?.published ?? true,
@@ -439,6 +441,61 @@ export default function PropertyForm({ property }: PropertyFormProps) {
           onImagesChange={(imgs) => updateField('images', imgs)}
           onCoverChange={(cover) => updateField('coverImage', cover)}
         />
+      </div>
+
+      {/* Section: Video */}
+      <div className="bg-white rounded-2xl border border-border p-6">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary">
+              <polygon points="23 7 16 12 23 17 23 7" />
+              <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="font-heading font-bold text-text">Video</h3>
+            <p className="text-xs text-text-light">URL directa al video (Cloudinary, .mp4)</p>
+          </div>
+        </div>
+        <div className="space-y-4">
+          <Input
+            label="URL del video"
+            type="url"
+            value={form.videoUrl || ''}
+            onChange={(e) => updateField('videoUrl', e.target.value)}
+            placeholder="https://res.cloudinary.com/dj9fcwv1g/video/upload/..."
+          />
+          <Input
+            label="URL del poster (opcional)"
+            type="url"
+            value={form.videoPoster || ''}
+            onChange={(e) => updateField('videoPoster', e.target.value)}
+            placeholder="Si no se completa, se genera del primer frame"
+          />
+          {form.videoUrl && (
+            <div className="flex items-center gap-3 p-3 rounded-xl bg-primary/5 border border-primary/10">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-primary shrink-0">
+                <polygon points="5 3 19 12 5 21 5 3" />
+              </svg>
+              <p className="text-xs text-text flex-1 truncate">{form.videoUrl}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  updateField('videoUrl', '')
+                  updateField('videoPoster', '')
+                }}
+                className="text-xs text-text-light hover:text-sold transition-colors shrink-0"
+                aria-label="Quitar video"
+              >
+                Quitar
+              </button>
+            </div>
+          )}
+          <p className="text-xs text-text-light leading-relaxed">
+            Para subir el video: entrá al Dashboard de Cloudinary, subilo a la carpeta de la propiedad y pegá acá la URL del archivo .mp4.
+            Si el video es de Cloudinary, el poster se genera automáticamente desde el primer frame.
+          </p>
+        </div>
       </div>
 
       {/* Section: SEO */}

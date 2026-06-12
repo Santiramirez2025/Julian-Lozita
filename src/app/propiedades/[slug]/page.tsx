@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       images: property.coverImage ? [{ url: property.coverImage }] : [],
+      videos: property.videoUrl ? [{ url: property.videoUrl }] : undefined,
       type: 'website',
     },
     twitter: {
@@ -68,6 +69,16 @@ export default async function PropertyPage({ params }: Props) {
     description: property.description,
     url: `${process.env.NEXT_PUBLIC_SITE_URL}/propiedades/${property.slug}`,
     image: property.images,
+    ...(property.videoUrl && {
+      video: {
+        '@type': 'VideoObject',
+        name: `Recorrido de ${property.title}`,
+        description: `Video tour de ${property.title} en ${property.neighborhood}, ${property.city}`,
+        contentUrl: property.videoUrl,
+        thumbnailUrl: property.videoPoster || property.coverImage,
+        uploadDate: property.createdAt.toISOString(),
+      },
+    }),
     offers: {
       '@type': 'Offer',
       ...(property.price > 0 && {

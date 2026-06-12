@@ -47,6 +47,10 @@ model Property {
   images     String[]
   coverImage String
 
+  // Video (URL directa al .mp4 de Cloudinary u otro CDN, opcional)
+  videoUrl    String?
+  videoPoster String?
+
   // Estado
   status    String  @default("available")
   featured  Boolean @default(false)

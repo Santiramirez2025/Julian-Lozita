@@ -21,6 +21,8 @@ export interface Property {
   features: string[]
   images: string[]
   coverImage: string
+  videoUrl: string | null
+  videoPoster: string | null
   status: string
   featured: boolean
   published: boolean
@@ -55,6 +57,8 @@ export interface PropertyFormData {
   features: string[]
   images: string[]
   coverImage: string
+  videoUrl?: string | null
+  videoPoster?: string | null
   status: string
   featured: boolean
   published: boolean
