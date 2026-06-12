@@ -13,7 +13,7 @@ export default function WhatsAppFloat() {
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ delay: 1, type: 'spring', stiffness: 200 }}
-      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg wa-pulse hover:scale-110 transition-transform"
+      className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#25D366] rounded-full hidden lg:flex items-center justify-center shadow-lg wa-pulse hover:scale-110 transition-transform"
       aria-label="Contactar por WhatsApp"
     >
       <svg width="28" height="28" viewBox="0 0 24 24" fill="white">

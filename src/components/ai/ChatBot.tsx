@@ -118,7 +118,7 @@ export default function ChatBot() {
             animate={{ scale: 1 }}
             exit={{ scale: 0 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-light text-white flex items-center justify-center shadow-lg shadow-primary/30 hover:scale-110 transition-transform"
+            className="fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary-light text-white hidden lg:flex items-center justify-center shadow-lg shadow-primary/30 hover:scale-110 transition-transform"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
@@ -136,7 +136,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ type: 'spring', duration: 0.35 }}
-            className="fixed bottom-6 left-6 z-50 w-[350px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl overflow-hidden bg-white border border-border shadow-2xl shadow-primary/10 flex flex-col"
+            className="fixed bottom-6 left-6 z-50 w-[350px] max-w-[calc(100vw-3rem)] h-[500px] max-h-[calc(100vh-6rem)] rounded-2xl overflow-hidden bg-white border border-border shadow-2xl shadow-primary/10 hidden lg:flex flex-col"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-primary-light p-4 flex items-center justify-between">
