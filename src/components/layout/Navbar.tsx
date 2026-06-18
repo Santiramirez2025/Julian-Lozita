@@ -52,10 +52,10 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo V3 — switches between color and white based on scroll */}
-          <Link href="/" className="flex items-center" aria-label="J-Lozita Inmobiliaria - Inicio">
+          <Link href="/" className="flex items-center" aria-label="J-Lozita — Estrategia Inmobiliaria & Patrimonial — Inicio">
             <img
               src={isScrolled ? '/images/logo.svg' : '/images/logo-white.svg'}
-              alt="J-Lozita Inmobiliaria"
+              alt="J-Lozita — Estrategia Inmobiliaria & Patrimonial"
               className="h-8 sm:h-9 w-auto transition-all duration-300"
             />
           </Link>

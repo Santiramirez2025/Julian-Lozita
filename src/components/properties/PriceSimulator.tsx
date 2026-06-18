@@ -19,7 +19,13 @@ export default function PriceSimulator({ price, currency, title, neighborhood }:
 
   return (
     <div className="rounded-2xl border border-border p-5 bg-white">
-      <h3 className="font-heading font-bold text-text text-sm mb-1">💰 ¿Cuánto tenés disponible?</h3>
+      <h3 className="font-heading font-bold text-text text-sm mb-1 flex items-center gap-1.5">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+          <line x1="12" y1="1" x2="12" y2="23" />
+          <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
+        </svg>
+        ¿Cuánto tenés disponible?
+      </h3>
       <p className="text-xs text-text-light mb-4">Calculá rápido cuánto te falta</p>
 
       <div className="flex items-center gap-2 mb-4">
@@ -48,8 +54,14 @@ export default function PriceSimulator({ price, currency, title, neighborhood }:
               <span className="text-sm font-semibold text-text">
                 {remaining > 0 ? 'Te faltan' : '¡Te alcanza!'}
               </span>
-              <span className={`font-mono font-bold text-lg ${remaining > 0 ? 'text-primary' : 'text-success'}`}>
-                {remaining > 0 ? formatPrice(remaining, currency) : '✅'}
+              <span className={`font-mono font-bold text-lg flex items-center gap-1 ${remaining > 0 ? 'text-primary' : 'text-success'}`}>
+                {remaining > 0 ? (
+                  formatPrice(remaining, currency)
+                ) : (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <polyline points="20 6 9 17 4 12" />
+                  </svg>
+                )}
               </span>
             </div>
           </div>

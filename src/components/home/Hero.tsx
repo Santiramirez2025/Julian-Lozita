@@ -32,7 +32,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative h-screen min-h-[600px] max-h-[900px] flex items-center overflow-hidden">
+    <section className="relative min-h-[600px] h-[100svh] max-h-[900px] flex items-center overflow-hidden">
       {/* Background images with crossfade */}
       {heroImages.map((src, index) => (
         <motion.div

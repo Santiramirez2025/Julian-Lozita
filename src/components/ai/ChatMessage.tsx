@@ -25,7 +25,13 @@ export default function ChatMessage({ message }: ChatMessageProps) {
               : 'bg-gradient-to-br from-accent/20 to-primary/10 text-primary'
           }`}
         >
-          {isUser ? 'U' : '✨'}
+          {isUser ? (
+            'U'
+          ) : (
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14l-6-4.5h7.5z" />
+            </svg>
+          )}
         </div>
 
         {/* Message bubble */}

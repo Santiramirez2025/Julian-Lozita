@@ -141,8 +141,10 @@ export default function ChatBot() {
             {/* Header */}
             <div className="bg-gradient-to-r from-primary to-primary-light p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white text-sm">
-                  ✨
+                <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center text-white">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14l-6-4.5h7.5z" />
+                  </svg>
                 </div>
                 <div>
                   <p className="text-white font-semibold text-sm">J-Lozita IA</p>

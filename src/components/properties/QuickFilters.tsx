@@ -52,9 +52,12 @@ export default function QuickFilters({ activeTag, onSelect }: QuickFiltersProps)
         {activeTag && (
           <button
             onClick={() => onSelect(null)}
-            className="shrink-0 px-3 py-2 rounded-xl text-sm font-medium text-text-light/50 hover:text-text-light transition-colors"
+            className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-medium text-text-light/50 hover:text-text-light transition-colors"
           >
-            ✕ Limpiar
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+            Limpiar
           </button>
         )}
       </div>

@@ -37,7 +37,14 @@ export default function PropertyCard({ property }: PropertyCardProps) {
           {/* Status badges */}
           <div className="absolute top-3 left-3 flex gap-2">
             {isNew && !isSold && (
-              <Badge variant="new" pulse>✨ Nueva</Badge>
+              <Badge variant="new" pulse>
+                <span className="inline-flex items-center gap-1">
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2l2.5 7.5H22l-6 4.5 2.5 7.5L12 17l-6.5 4.5L8 14l-6-4.5h7.5z" />
+                  </svg>
+                  Nueva
+                </span>
+              </Badge>
             )}
             {isReserved && (
               <Badge variant="warning">Reservada</Badge>
@@ -77,22 +84,22 @@ export default function PropertyCard({ property }: PropertyCardProps) {
 
           {/* Chips */}
           <div className="flex flex-wrap gap-2 mb-2">
-            {property.rooms && (
+            {property.rooms != null && property.rooms > 0 && (
               <span className="px-2.5 py-1 rounded-lg bg-gray-50 text-text-light text-xs font-medium">
                 {property.rooms} amb
               </span>
             )}
-            {property.totalArea && (
+            {property.totalArea != null && property.totalArea > 0 && (
               <span className="px-2.5 py-1 rounded-lg bg-gray-50 text-text-light text-xs font-medium">
                 {property.totalArea} m²
               </span>
             )}
-            {property.bathrooms && (
+            {property.bathrooms != null && property.bathrooms > 0 && (
               <span className="px-2.5 py-1 rounded-lg bg-gray-50 text-text-light text-xs font-medium">
                 {property.bathrooms} {property.bathrooms === 1 ? 'baño' : 'baños'}
               </span>
             )}
-            {property.garages && property.garages > 0 && (
+            {property.garages != null && property.garages > 0 && (
               <span className="px-2.5 py-1 rounded-lg bg-gray-50 text-text-light text-xs font-medium">
                 {property.garages} {property.garages === 1 ? 'cochera' : 'cocheras'}
               </span>
