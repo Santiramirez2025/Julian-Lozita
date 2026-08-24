@@ -1,31 +1,22 @@
-'use client'
+import type { Metadata } from 'next'
+import LandingHero from '@/components/landing/LandingHero'
+import Credentials from '@/components/landing/Credentials'
+import Process from '@/components/landing/Process'
+import LandingFooter from '@/components/landing/LandingFooter'
 
-import Navbar from '@/components/layout/Navbar'
-import Footer from '@/components/layout/Footer'
-import WhatsAppFloat from '@/components/layout/WhatsAppFloat'
-import ChatBot from '@/components/ai/ChatBot'
-import Hero from '@/components/home/Hero'
-import FeaturedProperties from '@/components/home/FeaturedProperties'
-import HowItWorks from '@/components/home/HowItWorks'
-import About from '@/components/home/About'
-import Testimonials from '@/components/home/Testimonials'
-import CTA from '@/components/home/CTA'
+export const metadata: Metadata = {
+  title: 'J-Lozita | Asesor Inmobiliario & Patrimonial en Villa María',
+  description:
+    'Julián no vende casas: es el asesor al que le consultás antes de una decisión inmobiliaria o patrimonial. Escribano Público y Abogado en Villa María, Córdoba. Armá tu perfil en 30 segundos.',
+}
 
 export default function HomePage() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <FeaturedProperties />
-        <HowItWorks />
-        <About />
-        <Testimonials />
-        <CTA />
-      </main>
-      <Footer />
-      <WhatsAppFloat />
-      <ChatBot />
-    </>
+    <main className="bg-[#07070C]">
+      <LandingHero />
+      <Credentials />
+      <Process />
+      <LandingFooter />
+    </main>
   )
 }

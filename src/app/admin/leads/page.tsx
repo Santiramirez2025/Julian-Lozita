@@ -32,6 +32,20 @@ interface RecentEvent {
   property: PropertyInfo | null
 }
 
+interface QualifierLead {
+  id: string
+  name: string
+  phone: string
+  objetivo: string
+  presupuesto: string
+  tipo: string | null
+  zona: string | null
+  plazo: string | null
+  summary: string | null
+  status: string
+  createdAt: string
+}
+
 interface LeadsData {
   stats: {
     total: number
@@ -39,9 +53,44 @@ interface LeadsData {
     last7: number
     last30: number
   }
+  qualifierStats?: {
+    total: number
+    today: number
+  }
+  qualifierLeads?: QualifierLead[]
   topProperties: TopProperty[]
   recentEvents: RecentEvent[]
 }
+
+// Etiquetas legibles de los códigos del simulador
+const LEAD_LABELS: Record<string, string> = {
+  comprar_vivir: 'Comprar para vivir',
+  invertir: 'Invertir',
+  resguardar: 'Resguardar patrimonio',
+  vender_permuta: 'Vender o permutar',
+  menos_50k: 'Hasta USD 50k',
+  '50_100k': 'USD 50k–100k',
+  '100_200k': 'USD 100k–200k',
+  mas_200k: 'Más de USD 200k',
+  a_definir: 'Presupuesto a definir',
+  casa: 'Casa',
+  departamento: 'Departamento',
+  lote: 'Lote / terreno',
+  local: 'Local / comercial',
+  otro: 'Otro tipo',
+  no_seguro: 'Sin definir',
+  centro: 'Villa María centro',
+  barrios: 'Barrios de Villa María',
+  afueras: 'Countries / afueras',
+  ya: 'Listo ahora',
+  '1_3_meses': '1 a 3 meses',
+  explorando: 'Explorando',
+}
+
+const label = (code: string | null | undefined) => (code ? LEAD_LABELS[code] || code : null)
+
+// Objetivos "calientes" para resaltar
+const HOT_OBJETIVOS = new Set(['invertir', 'resguardar', 'comprar_vivir'])
 
 export default function AdminLeadsPage() {
   const [data, setData] = useState<LeadsData | null>(null)
@@ -98,11 +147,17 @@ export default function AdminLeadsPage() {
       <div className="mb-8">
         <h1 className="font-heading font-extrabold text-3xl text-text mb-1">Leads</h1>
         <p className="text-text-light text-sm">
-          Personas que hicieron click en WhatsApp desde tus propiedades
+          Perfiles del simulador y clicks de WhatsApp desde propiedades
         </p>
       </div>
 
+      {/* Leads del simulador (perfiles calificados) */}
+      <QualifierLeadsSection leads={data.qualifierLeads || []} stats={data.qualifierStats} />
+
       {/* Stats cards */}
+      <h2 className="font-heading font-bold text-lg text-text mb-4">
+        Clicks de WhatsApp en propiedades
+      </h2>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         <StatCard label="Hoy" value={data.stats.today} accent="primary" />
         <StatCard label="Últimos 7 días" value={data.stats.last7} accent="primary-light" />
@@ -229,6 +284,114 @@ export default function AdminLeadsPage() {
       <div className="mt-6 text-xs text-text-light text-center">
         Los leads son anónimos. Solo registramos el click — el contacto real ocurre directamente en WhatsApp.
       </div>
+    </div>
+  )
+}
+
+function waLink(phone: string, name: string): string {
+  let digits = phone.replace(/\D/g, '')
+  if (!digits.startsWith('54')) digits = '549' + digits.replace(/^0/, '')
+  const msg = `Hola ${name.split(' ')[0]}, soy Julián. Vi tu perfil en la web 👋`
+  return `https://wa.me/${digits}?text=${encodeURIComponent(msg)}`
+}
+
+function QualifierLeadsSection({
+  leads,
+  stats,
+}: {
+  leads: QualifierLead[]
+  stats?: { total: number; today: number }
+}) {
+  return (
+    <div className="mb-10">
+      <div className="flex items-center justify-between mb-4">
+        <h2 className="font-heading font-bold text-lg text-text flex items-center gap-2">
+          <span className="inline-flex w-6 h-6 rounded-lg bg-gradient-to-br from-primary-light to-accent items-center justify-center text-white text-xs font-bold">
+            ✦
+          </span>
+          Perfiles del simulador
+        </h2>
+        {stats && (
+          <span className="text-xs text-text-light">
+            <span className="font-bold text-primary">{stats.today}</span> hoy ·{' '}
+            <span className="font-bold text-text">{stats.total}</span> total
+          </span>
+        )}
+      </div>
+
+      {leads.length === 0 ? (
+        <div className="bg-white rounded-2xl border border-border p-10 text-center">
+          <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-primary-light/10 to-accent/10 flex items-center justify-center text-2xl">
+            ✦
+          </div>
+          <h3 className="font-heading font-bold text-text mb-1">Todavía no hay perfiles</h3>
+          <p className="text-text-light text-sm max-w-sm mx-auto">
+            Cuando alguien complete el simulador de la landing, su perfil aparece acá con nombre, WhatsApp
+            y lo que busca.
+          </p>
+        </div>
+      ) : (
+        <div className="grid sm:grid-cols-2 gap-4">
+          {leads.map((lead) => {
+            const chips = [
+              label(lead.objetivo),
+              label(lead.presupuesto),
+              label(lead.tipo),
+              label(lead.zona),
+              label(lead.plazo),
+            ].filter(Boolean) as string[]
+            const hot = HOT_OBJETIVOS.has(lead.objetivo) && lead.plazo === 'ya'
+            return (
+              <div
+                key={lead.id}
+                className="bg-white rounded-2xl border border-border p-5 hover:border-primary-light/40 transition-colors"
+              >
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <div className="min-w-0">
+                    <div className="flex items-center gap-2">
+                      <p className="font-heading font-bold text-text truncate">{lead.name}</p>
+                      {hot && (
+                        <span className="shrink-0 text-[10px] font-bold uppercase tracking-wider bg-sold/10 text-sold px-2 py-0.5 rounded-full">
+                          🔥 Caliente
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-text-light text-xs mt-0.5">{timeAgo(new Date(lead.createdAt))}</p>
+                  </div>
+                  <a
+                    href={waLink(lead.phone, lead.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 inline-flex items-center gap-1.5 bg-[#25D366] text-white text-xs font-semibold px-3 py-2 rounded-xl hover:bg-[#20BD5A] transition-colors"
+                  >
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.75.75 0 00.917.918l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0z" />
+                    </svg>
+                    Escribir
+                  </a>
+                </div>
+
+                <p className="text-text-light text-xs mb-3 font-mono">{lead.phone}</p>
+
+                <div className="flex flex-wrap gap-1.5">
+                  {chips.map((c, i) => (
+                    <span
+                      key={i}
+                      className={`text-xs rounded-full px-2.5 py-1 ${
+                        i === 0
+                          ? 'bg-primary/10 text-primary font-semibold'
+                          : 'bg-bg text-text-light border border-border'
+                      }`}
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }

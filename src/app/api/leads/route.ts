@@ -10,6 +10,12 @@ export async function GET() {
   }
 
   try {
+    // Leads del simulador de la landing (perfil calificado)
+    const qualifierLeads = await prisma.lead.findMany({
+      orderBy: { createdAt: 'desc' },
+      take: 200,
+    })
+
     // Get all whatsapp_click events with property info
     const events = await prisma.propertyEvent.findMany({
       where: {
@@ -69,6 +75,8 @@ export async function GET() {
       .sort((a, b) => b.count - a.count)
       .slice(0, 10)
 
+    const qualifierToday = qualifierLeads.filter((l: typeof qualifierLeads[0]) => l.createdAt >= today).length
+
     return NextResponse.json({
       stats: {
         total: events.length,
@@ -76,6 +84,11 @@ export async function GET() {
         last7: last7Count,
         last30: last30Count,
       },
+      qualifierStats: {
+        total: qualifierLeads.length,
+        today: qualifierToday,
+      },
+      qualifierLeads,
       topProperties,
       recentEvents: events.slice(0, 50),
     })

@@ -103,6 +103,33 @@ model PropertyEvent {
   @@index([sessionId])
 }
 
+// Leads del simulador de la landing (perfil calificado sin propiedad asociada)
+model Lead {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+
+  // Perfil del simulador
+  objetivo    String   // comprar_vivir | invertir | resguardar | vender_permuta
+  presupuesto String   // menos_50k | 50_100k | 100_200k | mas_200k | a_definir
+  tipo        String?  // casa | departamento | lote | local | otro | no_seguro
+  zona        String?  // centro | barrios | afueras | no_seguro
+  plazo       String?  // ya | 1_3_meses | explorando
+
+  summary     String?  @db.Text // resumen legible que también se manda por WhatsApp
+  status      String   @default("new") // new | contacted | qualified | discarded
+  source      String   @default("landing_simulator")
+
+  ip          String?
+  userAgent   String?
+
+  createdAt   DateTime @default(now())
+
+  @@index([status])
+  @@index([objetivo])
+  @@index([createdAt])
+}
+
 // Scoring cache: la IA calcula y guarda scores
 model PropertyScore {
   id          String   @id @default(cuid())
