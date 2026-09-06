@@ -1,5 +1,7 @@
 'use client'
 
+import Link from 'next/link'
+
 const WHATSAPP = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5493534222575'
 const WA_LINK = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(
   'Hola Julián, quiero hacerte una consulta.'
@@ -22,6 +24,19 @@ export default function LandingFooter() {
               Julián Lozita — Escribano Público y Abogado. Asesoramiento y estrategia inmobiliaria &
               patrimonial en Villa María, Córdoba.
             </p>
+
+            <Link
+              href="/criterio"
+              className="group mt-5 inline-flex items-center gap-2 text-sm font-medium text-accent transition-colors hover:text-white"
+            >
+              <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-white/40 group-hover:text-white/60">
+                Recurso gratis
+              </span>
+              Guía: las 12 preguntas antes de firmar
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="h-4 w-4">
+                <path d="M5 12h14M13 6l6 6-6 6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-3 sm:items-end">

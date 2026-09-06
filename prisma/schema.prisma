@@ -149,6 +149,28 @@ model PropertyScore {
   aiSuggestions  String? @db.Text   // JSON con sugerencias
   
   updatedAt DateTime @updatedAt
-  
+
   @@index([heatScore(sort: Desc)])
+}
+
+// Leads de la guía descargable "Las 12 preguntas antes de firmar" (/criterio).
+// Independiente de Lead: acá no hay perfil de simulador, solo captura de contacto.
+model GuiaLead {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  whatsapp  String?  // opcional
+
+  // De qué canal llegó (YouTube Shorts, comentarios, WhatsApp, etc.). String libre.
+  source    String   @default("criterio")
+
+  // IP guardada hasheada (SHA-256 + salt). Solo para anti-abuso, no dato identificable.
+  ipHash    String?
+  userAgent String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([source])
+  @@index([createdAt])
 }

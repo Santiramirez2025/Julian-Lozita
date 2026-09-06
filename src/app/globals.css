@@ -204,3 +204,119 @@ input:focus, textarea:focus, select:focus {
     padding-bottom: 80px;
   }
 }
+
+/* ============================================================
+   /criterio — guía "Las 12 preguntas antes de firmar"
+   Índice imprimible y pie de impresión: ocultos en pantalla.
+   ============================================================ */
+.criterio-print-index,
+.criterio-print-footer {
+  display: none;
+}
+
+/* Vista de impresión / "Descargar PDF" (window.print()) */
+@media print {
+  @page {
+    margin: 14mm 14mm 20mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+  }
+
+  /* Fuera: nav, footer, formulario de captura, índice pegajoso, decoraciones */
+  .criterio-no-print {
+    display: none !important;
+  }
+
+  .criterio-page {
+    color: #111 !important;
+  }
+
+  /* El hero es oscuro en pantalla; en papel va claro y legible */
+  .criterio-page header {
+    background: #fff !important;
+    padding-top: 0 !important;
+    padding-bottom: 10px !important;
+  }
+  .criterio-page header * {
+    color: #111 !important;
+  }
+
+  /* Número de cada pregunta: en pantalla es blanco sobre navy; en papel,
+     borde negro sobre blanco para que se vea */
+  .criterio-qnum {
+    background: #fff !important;
+    color: #000 !important;
+    border: 1.5px solid #000;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* Ninguna pregunta partida entre dos hojas */
+  .criterio-question {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* La caja del ITI se imprime CON su fondo y borde: es el bloque que más importa */
+  .criterio-iti {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    border: 1.5px solid #1E3A5F;
+  }
+  .criterio-iti * {
+    color: #fff !important;
+  }
+  .criterio-iti strong {
+    color: #00D4FF !important;
+  }
+
+  /* La señal de alarma conserva su diferenciación en papel */
+  .criterio-alarma {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    border: 1px solid #EF4444 !important;
+  }
+
+  /* Índice desplegado como lista, al principio del documento */
+  .criterio-print-index {
+    display: block;
+    padding: 0 0 12px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #ccc;
+    break-after: page;
+  }
+  .criterio-print-index h2 {
+    font-size: 15pt;
+    margin: 0 0 8px;
+  }
+  .criterio-print-index ol {
+    list-style: decimal;
+    padding-left: 20px;
+  }
+  .criterio-print-index > ol > li {
+    margin-bottom: 6px;
+  }
+  .criterio-print-index ol ol {
+    list-style: disc;
+    margin-top: 3px;
+    color: #444;
+    font-size: 10pt;
+  }
+
+  /* Pie de impresión en cada hoja: URL + fecha de verificación */
+  .criterio-print-footer {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 6px 0;
+    text-align: center;
+    font-size: 9pt;
+    color: #555;
+    border-top: 1px solid #ddd;
+  }
+}

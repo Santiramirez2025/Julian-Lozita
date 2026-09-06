@@ -72,6 +72,7 @@ export default function Footer() {
 
   const navLinks = [
     { href: '/', label: 'Inicio' },
+    { href: '/criterio', label: 'Guía: 12 preguntas antes de firmar' },
     { href: '/propiedades', label: 'Oportunidades de inversión' },
     { href: '/contacto', label: 'Contacto' },
   ]
