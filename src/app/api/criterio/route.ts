@@ -15,8 +15,8 @@ import { prisma } from '@/lib/prisma'
  * más que en memoria, de forma transitoria, para el rate limit.
  */
 
-// Validación de email compartida con el cliente (mismo criterio).
-export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+// Validación de email (mismo criterio que el cliente en CaptureForm).
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 // --- Rate limit por IP (ventana deslizante, en memoria) ---------------------
 const RL_WINDOW_MS = 10 * 60 * 1000 // 10 minutos
