@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(node -e ' *)",
+      "Bash(sort -t: -k3)",
+      "Read(//Users/santiagoramirez/Desktop/**)",
+      "Bash(curl -s http://localhost:3100/criterio)",
+      "Bash(/Users/santiagoramirez/.volta/bin/node -e ' *)",
+      "Bash(pkill -f \"j-lozita/node_modules/next\")"
+    ]
+  }
+}

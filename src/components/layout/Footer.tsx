@@ -296,9 +296,9 @@ export default function Footer() {
               © {currentYear} J-Lozita — Asesoramiento y Estrategia Inmobiliaria & Patrimonial — Villa María, Córdoba
             </p>
             <p className="text-[11px] text-white/20 tracking-wide">
-              Diseño por{' '}
+              Desarrollado por{' '}
               <a
-                href="https://santiagoagustinramirez.com"
+                href="https://www.santiagoagustinramirez.com?utm_source=jlozita&utm_medium=referral&utm_campaign=firma"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-white/30 hover:text-accent transition-colors duration-300"
